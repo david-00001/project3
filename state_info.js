@@ -4,7 +4,7 @@ const url = "https://api.covidtracking.com/v1/states/daily.json"
 // Fetch JSON data
 d3.json(url).then(function(data) {
 
-  // Retrieve names array for dropdown
+  // Retrieve states for dropdown
   var states = data.map(obj => obj.state);
 
   // Populate the dropdown menu
