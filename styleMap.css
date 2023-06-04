@@ -1,5 +1,8 @@
 body {
-  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   margin: 0;
 }
 
@@ -7,4 +10,9 @@ body {
 body,
 html {
   height: 100%;
+}
+
+#map {
+  width: 400px;  /* Set the desired width */
+  height: 300px; /* Set the desired height */
 }
