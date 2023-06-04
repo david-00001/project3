@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>COVID Spread</title>
   <!--need to adjust here for the CSS styling-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -15,15 +15,17 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Project 3</h1>
-        <h2>Covid Spread Dashboard</h2>
+        <h1>Covid Spread Dashboard</h1>
+        <h2>Project 3</h2>
         <p>Use the interactive charts below to explore the dataset</p>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <h5>Select State:</h5>
+          <div class="tableTitle">
+            <h5>Select State:</h5>
+          </div>
           <select id="selState" onchange="optionChanged(this.value)"></select>
         </div>
         <div class="panel panel-primary">
