@@ -15,5 +15,5 @@
 
 
 #### Resources Used:
-	Used this article to understand how to use a set to contain unique values for dropdown:
+	Used this article to understand how to use a set to contain unique values for dropdown and then to convert it into an array:
 		https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
