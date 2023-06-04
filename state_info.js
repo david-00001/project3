@@ -65,8 +65,10 @@ const stateDictionary = {
 // Fetch JSON data
 d3.json(url).then(function(data) {
 
-  // Retrieve states for dropdown
-  //var states = data.map(obj => obj.state);
+
+
+
+  // Retrieve states for dropdown. Start by creating a new set
   var stateSet = new Set();
 
   // Retrieve states and add them to the Set
@@ -77,8 +79,6 @@ d3.json(url).then(function(data) {
 
   // Convert the Set to an array
   var states = Array.from(stateSet);
-
-  
 
   // Populate the dropdown menu
   var dropdown = d3.select("#selState");
@@ -107,10 +107,11 @@ d3.json(url).then(function(data) {
       return a.date - b.date;
     });
  
+    // Collect state info
     var stateCount = stateData.length;   // Count the number of occurrences of the selected state
     var firstDate = stateData[0].date;  // Get the first date from the selected state's data
     var lastDate = stateData[stateData.length - 1].date;  // Get the first date from the selected state's data
-    var fullName = stateDictionary[selectedState] || selectedState;
+    var fullName = stateDictionary[selectedState];
         
     // Display state information
     var stateInfo = d3.select("#stateInfo");
@@ -119,6 +120,10 @@ d3.json(url).then(function(data) {
     stateInfo.append("p").text(`First Date: ${firstDate}`);
     stateInfo.append("p").text(`Last Date: ${lastDate}`);
   }
+
+
+
+
 
 
 
@@ -138,7 +143,10 @@ d3.json(url).then(function(data) {
 
 
 
-
+  // Start with first state selected
   var initialSelectedState = states[0];
   optionChanged(initialSelectedState);
+
+
+
 });
