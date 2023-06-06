@@ -2,7 +2,6 @@
 var myMap = L.map("map", {
     center: [40.1381,-99.8264],
     zoom:4
-
 });
 
 // Add tile layer
@@ -75,25 +74,26 @@ const stateCoordinates = {
 };
 
 
-
-
-
 let data;
+init();
+
+
 
 // Function to handle changes in the dropdown selection
 function optionChanged(selectedDate) {
+    populateInfo(selectedDate)
+    buildMap(selectedDate);
+}
+
+
+
+
+
+
+
+function buildMap(selectedDate) {
 
     // Filter data for selected date
-    var dateData = data.filter(function(obj) {
-        return obj.date == selectedDate;
-    });
-
-
-
-
-
-
-
     var dateData = data.filter(function(obj) {
         return obj.date == selectedDate;
     });
@@ -134,23 +134,16 @@ function optionChanged(selectedDate) {
             marker.addTo(myMap);
         }
     });
+}
 
 
 
+// Populate date information
+function populateInfo(selectedDate) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var dateData = data.filter(function(obj) {
+        return obj.date == selectedDate;
+    });
 
     var numStates = dateData.length;
 
@@ -159,18 +152,18 @@ function optionChanged(selectedDate) {
     dateInfo.html("");   // Needed to reset text
     dateInfo.append("p").text(`Selected Date: ${selectedDate}`);
     dateInfo.append("p").text(`Number of States: ${numStates}`);
-    }
+}
 
 
-// Fetch JSON data
-d3.json(url).then(function(jsonData) {
+
+
+
+// Fetch data and populate dropdown
+function init() {
+    // Fetch JSON data
+    d3.json(url).then(function(jsonData) {
 
     data = jsonData
-
-
-
-
-    // ------------ POPULATE DROPDOWN ------------
 
     // Retrieve dates for dropdown. Start by creating a new set
     var dateSet = new Set();
@@ -196,16 +189,9 @@ d3.json(url).then(function(jsonData) {
     });
 
 
-
-
-
-
-
-
-  // Start with first date selected
-  var initialSelectedDate = dates[0];
-  optionChanged(initialSelectedDate);
-
-
+    // Start with first date selected
+    var initialSelectedDate = dates[0];
+    optionChanged(initialSelectedDate);
 
 });
+}
