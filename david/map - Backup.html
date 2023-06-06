@@ -23,25 +23,21 @@
     } */
 
     #map {
-      width: 100%;
-      height: 500px;
+        width: 700px;
+        height: 400px;
     }
   </style>
 </head>
 
 <body>
 
-  
-  <h1>Covid Spread Dashboard</h1>
-  <h2>Project 3</h2>
-  <p>Use the interactive charts below to explore the dataset</p>
-  <h5>Select Date:</h5>
-  <select id="selState" onchange="optionChanged(this.value)"></select>
-  <h3>Date Info</h3>
+  <div>
+    <h1>Title</h1>
+  </div>
+  <!--<select id="selDate" onchange="optionChanged(this.value)"></select>-->
   <div id="dateInfo" class="panel-body"></div>
   <div id="map"></div>
-
-
+  
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -51,7 +47,6 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <!-- Our JavaScript -->
   <script src="map.js"></script>
-  
 </body>
 
 </html>
