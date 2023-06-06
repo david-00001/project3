@@ -63,19 +63,10 @@ const stateDictionary = {
 
 
 let data;
-init();
 
 // Function to handle changes in the dropdown selection
 function optionChanged(selectedState) {
-  populateInfo(selectedState)
 
-}
-
-
-
-
-
-function populateInfo(selectedState) {
   // Filter data for selected state
   var stateData = data.filter(function(obj) {
     return obj.state === selectedState;
@@ -103,11 +94,12 @@ function populateInfo(selectedState) {
 
 
 
-// Fetch JSON data and populate dropdown
-function init() {
-  d3.json(url).then(function(jsonData) {
+// Fetch JSON data
+d3.json(url).then(function(jsonData) {
 
   data = jsonData
+
+
 
   // Retrieve states for dropdown. Start by creating a new set
   var stateSet = new Set();
@@ -131,6 +123,29 @@ function init() {
 
 
 
+
+
+
+
+
+
+
+
+  // // Activate function when dropdown changes
+  // dropdown.on("change", function() {
+  //   var selectedState = dropdown.property("value");
+  //   optionChanged(selectedState);
+  // });
+   
+
+
+    
+
+
+
+
+
+
   // Start with first state selected
   var initialSelectedState = states[0];
   optionChanged(initialSelectedState);
@@ -138,5 +153,3 @@ function init() {
 
 
 });
-
-}
