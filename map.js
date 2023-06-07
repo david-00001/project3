@@ -114,7 +114,7 @@ function buildMap(selectedDate) {
             var lat = coordinates[0];
             var lon = coordinates[1];
 
-            const minSize = 100;  // minimum size for circle
+            const minSize = 5;  // minimum size for circle
             const maxSize = 100;  // maximum size for circle
 
             let radius = positive / 500;  // adjust this factor as per your data
@@ -123,11 +123,12 @@ function buildMap(selectedDate) {
 
             // create circle marker
             var marker = L.circleMarker([lat, lon], {
-                radius: positive / 500, // adjust this for your data
-                color: "red",
+                radius: radius, // adjust this for your data
+                color: "black",
+                fillColor:"red",
                 weight: 1,
-                opacity: 1,
-                fillOpacity: 0.8
+                opacity: 100,
+                fillOpacity: 0.5
             });
 
             // add marker to map
