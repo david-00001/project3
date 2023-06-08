@@ -68,9 +68,6 @@ init();
 // Function to handle changes in the dropdown selection
 function optionChanged(selectedState) {
   populateInfo(selectedState)
-  raceCases(selectedState)
-  raceDeath(selectedState)
-  stackedBar(selectedState)
 
 }
 
@@ -132,8 +129,6 @@ function init() {
   });
 
 
-
-
   // Start with first state selected
   var initialSelectedState = states[0];
   // optionChanged(initialSelectedState)
@@ -145,4 +140,82 @@ function init() {
 
 });
 
+}
+
+// convert interger for date to string
+function dateStringToDate(DateStringINT) {
+    var dateString = DateStringINT.toString();
+    var year = dateString.substring(0, 4);
+    var month = dateString.substring(4, 6);
+    var day = dateString.substring(6, 8);
+    var date = new Date(year, month - 1, day);
+    return date;
+}
+
+function createPositiveCasesBarChart(selectedState) {
+  // Filter data for selected state
+  var stateData = data.filter(function(obj) {
+    return obj.state === selectedState;
+  });
+
+  // Sort the stateData array based on the date in ascending order
+  stateData.sort(function(a, b) {
+    return a.date - b.date;
+  });
+
+  // Extract date and positive cases values for the chart
+  var dates = stateData.map(function(obj) {
+    // previously new Date
+    return dateStringToDate(obj.date);
+  });
+
+  var positiveCases = stateData.map(function(obj) {
+    return obj.positive;
+  });
+
+  var deaths = stateData.map(function(obj) {
+    return obj.death;
+  });
+
+  // Create the chart data
+  var chartData = [{
+    x: dates,
+    y: positiveCases,
+    type: 'bar',
+    name: 'Positive Cases',
+    marker: {
+      color: "#B9E9FC"
+    }
+  },
+  {
+    x: dates,
+    y: deaths,
+    type:'line',
+    name:'Deaths',
+    yaxis: 'y2',
+    marker: {
+      color: "#FF6969"
+    }
+  }];
+
+  // Create the chart layout
+  var layout = {
+    title: `Positive Cases and Deaths in ${selectedState}`,
+    xaxis: {
+      title: 'Date',
+      type: 'date',
+      tickformat: '%Y-%m-%d'
+    },
+    yaxis: {
+      title: 'Positive Cases'
+    },
+    yaxis2: {
+      title: 'Deaths',
+      overlaying: 'y',
+      side: 'right',
+    }
+  };
+
+  // Plot the chart
+  Plotly.newPlot('chart', chartData, layout);
 }
