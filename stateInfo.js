@@ -68,6 +68,9 @@ init();
 // Function to handle changes in the dropdown selection
 function optionChanged(selectedState) {
   populateInfo(selectedState)
+  raceCases(selectedState)
+  raceDeath(selectedState)
+  stackedBar(selectedState)
 
 }
 
@@ -133,8 +136,11 @@ function init() {
 
   // Start with first state selected
   var initialSelectedState = states[0];
-  optionChanged(initialSelectedState);
-
+  // optionChanged(initialSelectedState)
+  populateInfo(initialSelectedState)
+  raceCases(initialSelectedState);
+  raceDeath(initialSelectedState)
+  stackedBar(initialSelectedState)
 
 
 });

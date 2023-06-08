@@ -8,27 +8,30 @@ import pandas as pd
 import json
 import flask
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
+import sqlite3
 
 
 # In[2]:
 
 
-csv = "race_data.csv"
-df = pd.read_csv(csv)
-
+conn = sqlite3.connect('covid_data.db')
+c = conn.cursor()
+race_df = pd.read_sql_query("SELECT * FROM state_race",conn)
+state_df = pd.read_sql_query("SELECT * FROM state_summary",conn)
 
 # In[3]:
 
 
-json_records = df.to_json(orient ='records')
-json_records
+json_race = race_df.to_json(orient ='records')
+json_state = state_df.to_json(orient='records')
 
 
 # In[4]:
 
 
-json_object = json.loads(json_records)
-json_object
+race_object = json.loads(json_race)
+state_object = json.loads(json_state)
 
 
 # In[5]:
@@ -42,13 +45,19 @@ app.config["DEBUG"] = True
 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/api/v1.0/race-by-state")
 def race_data():
     """Return Group 5's data as a json"""
 
-    return jsonify(json_object)
+    return jsonify(race_object)
 
+@app.route("/api/v1.0/state-stats")
+def state_data():
+    """Return Group 5's data as a json"""
+
+    return jsonify(state_object)
 
 # In[7]:
 
@@ -59,9 +68,10 @@ def welcome():
         f"Welcome to Group 5's Flask API<br/>"
         f"Available Routes:<br/>"
         f"/api/v1.0/race-by-state<br/>"
+        f"/api/v1.0/state-stats"
     )
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True)
 
 
 # In[ ]:
