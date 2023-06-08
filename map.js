@@ -2,7 +2,6 @@
 var myMap = L.map("map", {
     center: [40.1381,-99.8264],
     zoom:4
-
 });
 
 // Add tile layer
@@ -75,25 +74,26 @@ const stateCoordinates = {
 };
 
 
-
-
-
 let data;
+init();
+
+
 
 // Function to handle changes in the dropdown selection
 function optionChanged(selectedDate) {
+    populateInfo(selectedDate)
+    buildMap(selectedDate);
+}
+
+
+
+
+
+
+
+function buildMap(selectedDate) {
 
     // Filter data for selected date
-    var dateData = data.filter(function(obj) {
-        return obj.date == selectedDate;
-    });
-
-
-
-
-
-
-
     var dateData = data.filter(function(obj) {
         return obj.date == selectedDate;
     });
@@ -114,7 +114,7 @@ function optionChanged(selectedDate) {
             var lat = coordinates[0];
             var lon = coordinates[1];
 
-            const minSize = 100;  // minimum size for circle
+            const minSize = 5;  // minimum size for circle
             const maxSize = 100;  // maximum size for circle
 
             let radius = positive / 500;  // adjust this factor as per your data
@@ -123,34 +123,28 @@ function optionChanged(selectedDate) {
 
             // create circle marker
             var marker = L.circleMarker([lat, lon], {
-                radius: positive / 500, // adjust this for your data
-                color: "red",
+                radius: radius, // adjust this for your data
+                color: "black",
+                fillColor:"red",
                 weight: 1,
-                opacity: 1,
-                fillOpacity: 0.8
+                opacity: 100,
+                fillOpacity: 0.5
             });
 
             // add marker to map
             marker.addTo(myMap);
         }
     });
+}
 
 
 
+// Populate date information
+function populateInfo(selectedDate) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    var dateData = data.filter(function(obj) {
+        return obj.date == selectedDate;
+    });
 
     var numStates = dateData.length;
 
@@ -159,18 +153,18 @@ function optionChanged(selectedDate) {
     dateInfo.html("");   // Needed to reset text
     dateInfo.append("p").text(`Selected Date: ${selectedDate}`);
     dateInfo.append("p").text(`Number of States: ${numStates}`);
-    }
+}
 
 
-// Fetch JSON data
-d3.json(url).then(function(jsonData) {
+
+
+
+// Fetch data and populate dropdown
+function init() {
+    // Fetch JSON data
+    d3.json(url).then(function(jsonData) {
 
     data = jsonData
-
-
-
-
-    // ------------ POPULATE DROPDOWN ------------
 
     // Retrieve dates for dropdown. Start by creating a new set
     var dateSet = new Set();
@@ -196,16 +190,9 @@ d3.json(url).then(function(jsonData) {
     });
 
 
-
-
-
-
-
-
-  // Start with first date selected
-  var initialSelectedDate = dates[0];
-  optionChanged(initialSelectedDate);
-
-
+    // Start with first date selected
+    var initialSelectedDate = dates[0];
+    optionChanged(initialSelectedDate);
 
 });
+}
