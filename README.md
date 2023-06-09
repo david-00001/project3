@@ -17,3 +17,7 @@
 #### Resources Used:
 	Used this article to understand how to use a set to contain unique values for dropdown and then to convert it into an array:
 		https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+
+	Used this site to use the rangeslider js library and how to create it:
+		https://rangeslider.js.org/
+		https://www.w3schools.com/howto/howto_js_rangeslider.asp
