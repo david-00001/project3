@@ -41,11 +41,34 @@ function buildMap(data, selectedDate) {
 
     // Configure the layout for the choropleth map
     const layout = {
-    title: 'Positive COVID Cases',
+    title: {
+        text: 'Positive COVID Cases',
+        font: {
+            size:20,
+            family: 'Arial',
+            weight: 'bold'
+        },
+        y:0.95, // For vertical alignment
+    },
     geo: {
         scope: 'usa',
         showlakes: false,
         lakecolor: 'rgb(255,255,255)'
+    },
+    legend: {
+        x:1,
+        y:1,
+        xanchor:'right',
+        yanchor:'top',
+        pad: {
+            r:100
+        }
+    },
+    margin: {
+        t: 20,
+        r: 20,
+        b: 20,
+        l: 20
     }
     };
 

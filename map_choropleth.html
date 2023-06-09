@@ -22,17 +22,35 @@
 <body>
 
   
-  <h1>COVID Spread Dashboard</h1>
-  <a href="index.html" class="button-link">Home</a>
-  <a href="charts.html" class="button-link">Charts</a>
-  <a href="map_choropleth.html" class="button-link">US Map</a>
-  <p>Use the slider to view the data for that date. The date range is from January 28, 2020 to March 7, 2021.</p>
-  <p>Data is provided by https://api.covidtracking.com/v1/states/daily.json</p>
-  <div id="slidecontainer">
-    <input type="range" min="0" max="100" value="0" id="slider">
-    <p>Date Selected: <span id="dateInfo1"></span></p>
-    <p>Number of States with Positive Cases: <span id="dateInfo2"></span></p>
-  <div id="map"></div>
+  <h1>COVID Dashboard</h1>
+  <div class="button-container">
+    <a href="index.html" class="button-link">Home</a>
+    <a href="charts.html" class="button-link">Charts</a>
+    <a href="map_choropleth.html" class="button-link">US Map</a>
+  </div>
+
+  <br></br>
+  
+  <div class="map-container">
+    <div>
+      <p>Use the slider at the bottom of the map to view the data for that date.</p>
+      <p>The date range is from <strong>January 28, 2020</strong> to <strong>March 7, 2021</strong>.</p>
+      
+    </div>
+    <div id="slidecontainer">
+      <div id="map"></div>
+      
+      <div class="map-subtext">
+        <div><p class="center-align">Date Selected: <span id="dateInfo1" class="bold-text"></span></p></div>
+        <div><p class="center-align">Number of States with Positive Cases: <span id="dateInfo2" class="bold-text"></span></p></div>
+      </div>
+      <input type="range" min="0" max="100" value="0" id="slider">
+    </div>    
+  </div>
+  
+  
+  
+
   <div id="table"></div>
 
 
