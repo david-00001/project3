@@ -8,6 +8,7 @@
   <title>COVID Spread</title>
   <!--need to adjust here for the CSS styling-->
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -15,56 +16,16 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Covid Spread Dashboard</h1>
-        <h2>Project 3</h2>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <h1>COVID Spread Dashboard</h1>
+        <a href="index.html" class="button-link">Home</a>
+        <a href="charts.html" class="button-link">Charts</a>
+        <a href="map_choropleth.html" class="button-link">US Map</a>
+        <h3>Project Description</h3>
+        <p>In 2020 the US along with the rest of the world experienced a tremendous upset in lifestyle that reached virtually every person. Daily news updates communicated the spread of COVID as well as the responses from state governments. Several websites including the CDC produced real-time information to help people understand the spread of this new pandemic.
+        </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <div class="tableTitle">
-            <h5>Select State:</h5>
-          </div>
-          <select id="selState" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">State Info</h3>
-          </div>
-          <div id="stateInfo" class="panel-body"></div>
-        </div>
-      </div>
-      <div class="col-md-5">
-        <div id="raceCase"></div>
-      </div>
-      <div class="row"></div>
-        <div class="col-md-5">
-          <div id="raceDeath"></div>
-        </div>
-      </div>
-      <div class="row"></div>
-        <div class="col-md-5">
-          <div id="stateSummary"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="bubble"></div>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!--adjust here for the various Javascript files-->
-  <!-- This is an example:
-  <script src="./static/js/app.js"></script>   
-  -->
-  <script src="stateInfo.js"></script>
-  <script src="austin/stateRace.js"></script>
-  <!-- <script src="austin/app.py"></script> -->
+    
   
 </body>
 

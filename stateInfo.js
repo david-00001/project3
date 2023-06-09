@@ -68,7 +68,7 @@ init();
 // Function to handle changes in the dropdown selection
 function optionChanged(selectedState) {
   populateInfo(selectedState)
-
+  createPositiveCasesBarChart(selectedState) //Carolyn's chart(s)
 }
 
 
@@ -131,7 +131,7 @@ function init() {
 
   // Start with first state selected
   var initialSelectedState = states[0];
-  // optionChanged(initialSelectedState)
+  // optionChanged(initialSelectedState)   - Carolyn has this not-commented
   populateInfo(initialSelectedState)
   raceCases(initialSelectedState);
   raceDeath(initialSelectedState)
@@ -177,8 +177,20 @@ function createPositiveCasesBarChart(selectedState) {
     return obj.death;
   });
 
+  var totalTestResults = stateData.map(function(obj) {
+    return obj.totalTestResults;
+  });
+  
+  var positiveTestsViral = stateData.map(function(obj) {
+    return obj.positiveTestsViral;
+  });
+  
+  var negativeTestsViral = stateData.map(function (obj) {
+    return obj.negativeTestsViral;
+  });
+
   // Create the chart data
-  var chartData = [{
+  var chartData1 = [{
     x: dates,
     y: positiveCases,
     type: 'bar',
@@ -198,24 +210,106 @@ function createPositiveCasesBarChart(selectedState) {
     }
   }];
 
-  // Create the chart layout
-  var layout = {
-    title: `Positive Cases and Deaths in ${selectedState}`,
-    xaxis: {
-      title: 'Date',
-      type: 'date',
-      tickformat: '%Y-%m-%d'
+  // Create the chart data for the pie chart
+var chartData2 = [
+  {
+    labels: [
+      //"Total Test Results",     Carolyn had this on but I don't think it is actually wanted
+      "Number of Positive Test Results",
+      "Number of Negative Test Results"
+    ],
+    values: [
+      positiveTestsViral[positiveTestsViral.length - 1],
+      negativeTestsViral[negativeTestsViral.length - 1],
+    ],
+    type: "pie",
+    marker: {
+      colors: ["#D4F1F4", "#F79489"],
     },
-    yaxis: {
-      title: 'Positive Cases'
-    },
-    yaxis2: {
-      title: 'Deaths',
-      overlaying: 'y',
-      side: 'right',
-    }
-  };
+  },
+];
 
-  // Plot the chart
-  Plotly.newPlot('chart', chartData, layout);
+// Create chart data for third graph
+var chartData3 = [
+  {
+    x: dates,
+    y: deaths,
+    type: "bar",
+    name: "COVID Deaths",
+    marker: {
+      color: "#",
+    },
+  },
+  {
+    x: dates,
+    y: positiveTestsViral,
+    type: "line",
+    name: "Positive COVID Test Results",      //This needs to be renamed so it doesn't display the same as the one below because of limited space
+    yaxis: "y2",
+    marker: {
+      color: "#FF6969",
+    },
+  },
+  {
+    x: dates,
+    y: positiveCases,
+    type: "line",
+    name: "Positive COVID cases",     //This needs to be renamed so it doesn't display the same as the one below because of limited space
+    yaxis: "y2",
+    marker: {
+      color: "#FF6969",
+    },
+  },
+];
+
+// Create the chart layout
+var layout1 = {
+  title: `Positive Cases and Deaths in ${selectedState}`,
+  xaxis: {
+    title: 'Date',
+    type: 'date',
+    tickformat: '%Y-%m-%d'
+  },
+  yaxis: {
+    title: 'Positive Cases'
+  },
+  yaxis2: {
+    title: 'Deaths',
+    overlaying: 'y',
+    side: 'right',
+  }
+};
+
+// Create the chart layout
+var layout2 = {
+  title: `COVID Tests Results in ${selectedState}`,
+};
+
+// Create chart layout
+var layout3 = {
+  title: `Positive Test Results and Deaths in ${selectedState}`,
+  xaxis: {
+    title: "Date",
+    type: "date",
+    tickformat: "%Y-%m-%d",
+  },
+  yaxis: {
+    title: "Positive Test Results",
+  },
+  yaxis2: {
+    title: "Deaths",
+    overlaying: "y",
+    side: "right",
+  },
+};
+
+// Plot the chart
+Plotly.newPlot("chart1", chartData1, layout1);
+Plotly.newPlot("chart2", chartData2, layout2);
+Plotly.newPlot("chart3", chartData3, layout3);
 }
+
+// This was here before adding Carolyn's code. I think it was from when she just had one chart
+// // Plot the chart
+// Plotly.newPlot('chart', chartData, layout);
+// }
