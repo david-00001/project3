@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>COVID Map</title>
+
+  <!-- Rangeslider CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  
+  <h1>COVID Spread Dashboard</h1>
+  <a href="index.html" class="button-link">Home</a>
+  <a href="charts.html" class="button-link">Charts</a>
+  <a href="map_choropleth.html" class="button-link">US Map</a>
+  <p>Use the slider to view the data for that date. The date range is from January 28, 2020 to March 7, 2021.</p>
+  <p>Data is provided by https://api.covidtracking.com/v1/states/daily.json</p>
+  <div id="slidecontainer">
+    <input type="range" min="0" max="100" value="0" id="slider">
+    <p>Date Selected: <span id="dateInfo1"></span></p>
+    <p>Number of States with Positive Cases: <span id="dateInfo2"></span></p>
+  <div id="map"></div>
+  <div id="table"></div>
+
+
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <!-- Our JavaScript -->
+  <script src="map_choropleth.js" defer></script>
+  <!-- Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Rangeslider JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.min.js"></script>
+  
+</body>
+
+</html>
