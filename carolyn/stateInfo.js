@@ -174,45 +174,136 @@ function createPositiveCasesBarChart(selectedState) {
     return obj.death;
   });
 
-  // Create the chart data
-  var chartData = [{
+var totalTestResults = stateData.map(function(obj) {
+  return obj.totalTestResults;
+});
+
+var positiveTestsViral = stateData.map(function(obj) {
+  return obj.positiveTestsViral;
+});
+
+var negativeTestsViral = stateData.map(function (obj) {
+  return obj.negativeTestsViral;
+});
+
+ // Create the chart data
+ var chartData1 = [
+  {
     x: dates,
     y: positiveCases,
-    type: 'bar',
-    name: 'Positive Cases',
+    type: "bar",
+    name: "Positive Cases",
     marker: {
-      color: "#B9E9FC"
-    }
+      color: "#B9E9FC",
+    },
   },
   {
     x: dates,
     y: deaths,
-    type:'line',
-    name:'Deaths',
-    yaxis: 'y2',
+    type: "line",
+    name: "Deaths",
+    yaxis: "y2",
     marker: {
-      color: "#FF6969"
-    }
-  }];
-
-  // Create the chart layout
-  var layout = {
-    title: `Positive Cases and Deaths in ${selectedState}`,
-    xaxis: {
-      title: 'Date',
-      type: 'date',
-      tickformat: '%Y-%m-%d'
+      color: "#FF6969",
     },
-    yaxis: {
-      title: 'Positive Cases'
-    },
-    yaxis2: {
-      title: 'Deaths',
-      overlaying: 'y',
-      side: 'right',
-    }
-  };
+  },
+];
 
-  // Plot the chart
-  Plotly.newPlot('chart', chartData, layout);
+// Create the chart data for the pie chart
+var chartData2 = [
+  {
+    labels: [
+      "Total Test Results",
+      "Number of Positive Test Results",
+      "Number of Negative Test Results",
+    ],
+    values: [
+      positiveTestsViral[positiveTestsViral.length - 1],
+      negativeTestsViral[negativeTestsViral.length - 1],
+    ],
+    type: "pie",
+    marker: {
+      colors: ["#D4F1F4", "#F79489"],
+    },
+  },
+];
+
+// Create chart data for third graph
+var chartData3 = [
+  {
+    x: dates,
+    y: deaths,
+    type: "bar",
+    name: "COVID Deaths",
+    marker: {
+      color: "#",
+    },
+  },
+  {
+    x: dates,
+    y: positiveTestsViral,
+    type: "line",
+    name: "Positive COVID Test Results",
+    yaxis: "y2",
+    marker: {
+      color: "#FF6969",
+    },
+  },
+  {
+    x: dates,
+    y: positiveCases,
+    type: "line",
+    name: "Positive COVID cases",
+    yaxis: "y2",
+    marker: {
+      color: "#FF6969",
+    },
+  },
+];
+
+// Create the chart layout
+var layout1 = {
+  title: `Positive Cases and Deaths in ${selectedState}`,
+  xaxis: {
+    title: "Date",
+    type: "date",
+    tickformat: "%Y-%m-%d",
+  },
+  yaxis: {
+    title: "Positive Cases",
+  },
+  yaxis2: {
+    title: "Deaths",
+    overlaying: "y",
+    side: "right",
+  },
+};
+
+// Create the chart layout
+var layout2 = {
+  title: `COVID Tests Results in ${selectedState}`,
+};
+
+// Create chart layout
+var layout3 = {
+  title: `Positive Test Results and Deaths in ${selectedState}`,
+  xaxis: {
+    title: "Date",
+    type: "date",
+    tickformat: "%Y-%m-%d",
+  },
+  yaxis: {
+    title: "Positive Test Results",
+  },
+  yaxis2: {
+    title: "Deaths",
+    overlaying: "y",
+    side: "right",
+  },
+};
+
+// Plot the chart
+Plotly.newPlot("chart1", chartData1, layout1);
+Plotly.newPlot("chart2", chartData2, layout2);
+Plotly.newPlot("chart3", chartData3, layout3);
 }
