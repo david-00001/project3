@@ -6,7 +6,6 @@ body {
 
 body {
   background-color: rgb(184, 124, 124);
-  font-family:"arial",sans-serif;
 }
 
 html {
@@ -31,6 +30,7 @@ h2 {
   line-height: 0%;
 }
 
+/* Pannel with dropdown */
 .well {
   color: black;
   height: max-content;
@@ -41,11 +41,6 @@ h2 {
   padding-bottom: 1px;
   padding-top: 0px;
   background-color: gold;
-}
-
-.dropdown{
-  background-color: lime;
-  width:20px;
 }
 
 

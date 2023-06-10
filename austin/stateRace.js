@@ -164,7 +164,13 @@ function raceDeath (state){
       traceData = [trace1,trace2,trace3,trace4,trace5,trace6]
 
       let layout = {
-        title: "Deaths by Race"
+        title: "Deaths by Race",
+        width: 1000,
+        height: 500,
+        // background color
+        paper_bgcolor:"rgb(86, 171, 204)"
+        // plot_bgcolor for the plot background
+        
       }
 
       Plotly.newPlot("raceDeath",traceData,layout)

@@ -69,6 +69,10 @@ init();
 function optionChanged(selectedState) {
   populateInfo(selectedState)
   createPositiveCasesBarChart(selectedState) //Carolyn's chart(s)
+  raceCases(selectedState)
+  raceDeath(selectedState)
+  stackedBar(selectedState)
+
 }
 
 
