@@ -1,25 +1,27 @@
 // URL to sample data
 const url = "https://api.covidtracking.com/v1/states/daily.json"
 
+const territories = ["AS","DC","GU","MP","PR","VI"];
 
 
 
 
 
-
-
+// Function to build map
 function buildMap(data, selectedDate) {
     // Filter data for selected date
     var dateData = data.filter(function(obj) {
-        return obj.date == selectedDate;
+        return obj.date == selectedDate && obj.positive !==0;
     });
 
     // Extract the state acronyms and corresponding values
     const locations = dateData.map(entry => entry.state);
     const values = dateData.map(entry => entry.positive);
 
+    // Confirm values are correct
     console.log(locations)
     console.log(values)
+
     // Create the choropleth trace
     const trace = {
     type: 'choropleth',
@@ -81,19 +83,59 @@ function buildMap(data, selectedDate) {
 function optionChanged(selectedDate) {
     populateInfo(selectedDate)
     buildMap(data, selectedDate);
+    buildTable(data, selectedDate);
 
 
 }
 
 
-// Populate date information
+// Function to populate date information
 function populateInfo(selectedDate) {
     var dateData = data.filter(function(obj) {
-        return obj.date == selectedDate;
+        return obj.date == selectedDate && obj.positive !== null && !territories.includes(obj.state) && obj.positive !==0;
     });
 
-    document.getElementById("dateInfo2").innerHTML = dateData.length;
+    document.getElementById("numOfStates").innerHTML = dateData.length;
 }
+
+
+
+
+// Function to build table
+function buildTable(data, selectedDate) {
+    // Filter data for selected date
+    var dateData = data.filter(function(obj) {
+        return obj.date == selectedDate && obj.positive !==null && !territories.includes(obj.state) && obj.positive !==0;
+    });
+
+    // Sort data based on positive cases in descending order
+    dateData.sort(function(a, b) {
+        return b.positive - a.positive;
+    });
+
+    // Select the top ten states
+    var topTenData = dateData.slice(0, 10);
+
+    // Print to console for testing purposes
+    console.log(topTenData);
+
+    // Create the table HTML
+    var tableHTML = "<table><tr><th>State</th><th>Positive Cases</th></tr>";
+
+    // Populate the table rows with state and positive case data
+    topTenData.forEach(function(obj) {
+        var formattedPositive = obj.positive.toLocaleString();
+        tableHTML += "<tr><td>" + obj.state + "</td><td>" + formattedPositive + "</td></tr>";
+    });
+
+    tableHTML += "</table>";
+
+    // Display the table
+    document.getElementById("table").innerHTML = tableHTML;
+}
+
+
+
 
 
 
@@ -128,10 +170,17 @@ function init() {
     // Start with first date selected
     var initialSelectedDate = dates[0];
     dateInfo1.innerHTML = initialSelectedDate;
+    dateInfo2.innerHTML = initialSelectedDate;
     optionChanged(initialSelectedDate);
 
 });
 }
+
+
+
+
+
+
 
 
 
@@ -144,14 +193,17 @@ init();
 var slider = document.getElementById('slider');
 var dateInfo1 = document.getElementById("dateInfo1");
 dateInfo1.innerHTML = slider.value;
+dateInfo2.innerHTML = slider.value;
 
 slider.oninput = function() {
     dateInfo1.innerHTML = this.value;
+    dateInfo2.innerHTML = this.value;
     // Convert the slider value to a date from the dates array
     var selectedDate = dates[this.value];
 
     // Output the selected date
     dateInfo1.innerHTML = selectedDate;
+    dateInfo2.innerHTML = selectedDate;
 
     // Call the optionChanged() function with the selected date
     optionChanged(selectedDate);
