@@ -116,6 +116,10 @@ function populateInfo(selectedState) {
   stateInfo.append("hr")
   stateInfo.append("p").text(`First Date: ${firstDate}`);
   stateInfo.append("p").text(`Last Date: ${lastDate}`);
+
+  var stateCases = d3.select("#stateCases");
+  stateCases.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
+  stateCases.append("p").text(`${totalPositive}`)
 }
 
 
@@ -154,6 +158,7 @@ function init() {
   raceCases(initialSelectedState);
   raceDeath(initialSelectedState)
   stackedBar(initialSelectedState)
+  createPositiveCasesBarChart(initialSelectedState)
 
 
 });

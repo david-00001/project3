@@ -15,22 +15,31 @@ html {
 }
 
 /* formating grid */
-.header {grid-area: header;}
+.header {
+  grid-area: header;
+}
 .menu {grid-area: menu;}
 .main {grid-area: main;}
 .left {grid-area: left;}
 .right {grid-area: right;}
+.left2 {grid-area: left2; background-color: blueviolet;}
+.right2 {grid-area: right2;}
+.main2 {grid-area: main2;}
 
 .grid-container {
   display: grid;
   grid-template-areas: 
-    'header header header header header header'
-    'menu left left right right right'
-    'menu main main main main main'
+    'header header header header header'
+    'menu left left right right'
+    'menu main main main main'
+    'menu left2 left2 right2 right2'
+    'menu main2 main2 main2 main2'
     ;
   gap: 10px;
   padding: 10px;
+  
 }
+
 
 
 
