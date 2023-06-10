@@ -14,7 +14,7 @@ function raceCases (state){
       let casesAsian = [];
       let casesBlack = [];
       let casesWhite = [];
-      let casesHispanic = [];
+      let casesLatinx = [];
       let casesNative = [];
       let casesPacificIslander = [];
       for(i in r) {
@@ -23,7 +23,7 @@ function raceCases (state){
         casesAsian.push(r[i].Cases_Asian)
         casesBlack.push(r[i].Cases_Black)
         casesWhite.push(r[i].Cases_White)
-        casesHispanic.push(r[i].Cases_Latinx)
+        casesLatinx.push(r[i].Cases_Latinx)
         casesNative.push(r[i].Cases_AIAN)
         casesPacificIslander.push(r[i].Cases_NHPI)
       }
@@ -54,8 +54,8 @@ function raceCases (state){
       }
       trace4 = {
         x: date,
-        y: casesHispanic,
-        name: "Hispanic",
+        y: casesLatinx,
+        name: "Latinx",
         type: "scatter",
         mode: "lines",
       }
@@ -77,7 +77,10 @@ function raceCases (state){
       traceData = [trace1,trace2,trace3,trace4,trace5,trace6]
 
       let layout = {
-        title: "Cases by Race"
+        title: "Cases by Race",
+        width: 700,
+        height: 400,
+        paper_bgcolor:"rgb(86, 171, 204)",
       }
 
       Plotly.newPlot("raceCase",traceData,layout)
@@ -101,7 +104,7 @@ function raceDeath (state){
       let deathsAsian = [];
       let deathsBlack = [];
       let deathsWhite = [];
-      let deathsHispanic = [];
+      let deathsLatinx = [];
       let deathsNative = [];
       let deathsPacificIslander = [];
       for(i in r) {
@@ -110,7 +113,7 @@ function raceDeath (state){
         deathsAsian.push(r[i].Deaths_Asian)
         deathsBlack.push(r[i].Deaths_Black)
         deathsWhite.push(r[i].Deaths_White)
-        deathsHispanic.push(r[i].Deaths_Latinx)
+        deathsLatinx.push(r[i].Deaths_Latinx)
         deathsNative.push(r[i].Deaths_AIAN)
         deathsPacificIslander.push(r[i].Deaths_NHPI)
       }
@@ -141,8 +144,8 @@ function raceDeath (state){
       }
       trace4 = {
         x: date,
-        y: deathsHispanic,
-        name: "Hispanic",
+        y: deathsLatinx,
+        name: "Latinx",
         type: "scatter",
         mode: "lines",
       }
@@ -165,8 +168,8 @@ function raceDeath (state){
 
       let layout = {
         title: "Deaths by Race",
-        width: 1000,
-        height: 500,
+        width: 700,
+        height: 400,
         // background color
         paper_bgcolor:"rgb(86, 171, 204)"
         // plot_bgcolor for the plot background
@@ -224,7 +227,7 @@ function stackedBar (state){
         // xaxis: 'x1',
         barmode: 'stack',
         orientation: "h", 
-        marker: {color: '#f26d7d'}
+        marker: {color: 'green'}
       }
 
       trace2 = {
@@ -235,7 +238,7 @@ function stackedBar (state){
         // xaxis: 'x1',
         barmode: 'stack',
         orientation: "h", 
-        marker: {color: '#d1606e'}
+        marker: {color: 'orange'}
       }
 
       trace3 = {
@@ -246,7 +249,7 @@ function stackedBar (state){
         // xaxis: 'x1',
         barmode: 'stack',
         orientation: "h", 
-        marker: {color: '#9c4650'}
+        marker: {color: 'blue'}
       }
 
       trace4 = {
@@ -257,7 +260,7 @@ function stackedBar (state){
         // xaxis: 'x1',
         barmode: 'stack',
         orientation: "h", 
-        marker: {color: 'blue'}
+        marker: {color: 'redorange'}
       }
 
       trace5 = {
@@ -279,7 +282,7 @@ function stackedBar (state){
         // xaxis: 'x1',
         barmode: 'stack',
         orientation: "h", 
-        marker: {color: 'green'}
+        marker: {color: 'rgb(138, 100, 62)'}
       }
 
       trace7 = {
@@ -296,8 +299,11 @@ function stackedBar (state){
       traceData = [trace1,trace2,trace3,trace4,trace5,trace6,trace7]
 
       let layout = {
+        title: "Population Percentages",
         barmode: "stack",
         xaxis: {tickformat: '%'},
+        paper_bgcolor: "rgb(86, 171, 204)",
+        plot_bgcolor: "rgb(86, 171, 204)",
         // yaxis: {
         //   domain: [0, 0.33],
         //   anchor: 'x1', 

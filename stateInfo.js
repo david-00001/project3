@@ -89,17 +89,31 @@ function populateInfo(selectedState) {
   stateData.sort(function(a, b) {
     return a.date - b.date;
   });
-
+  console.log(stateData)
   // Collect state info
   var stateCount = stateData.length;   // Count the number of occurrences of the selected state
   var firstDate = stateData[0].date;  // Get the first date from the selected state's data
   var lastDate = stateData[stateData.length - 1].date;  // Get the first date from the selected state's data
   var fullName = stateDictionary[selectedState];
+  var deaths = stateData[stateData.length-1].death;
+  var hospitalized = stateData[stateData.length-1].hospitalized;
+  var totalPositive = stateData[stateData.length-1].total;
       
   // Display state information
   var stateInfo = d3.select("#stateInfo");
   stateInfo.html("");
-  stateInfo.append("p").text(`Records for ${fullName}: ${stateCount}`);
+  stateInfo.append("p").html(`<p><b>Records for ${fullName}: </b></p>`);
+  stateInfo.append("p").text(`${stateCount}`)
+  stateInfo.append("hr")
+  stateInfo.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
+  stateInfo.append("p").text(`${totalPositive}`)
+  stateInfo.append("hr")
+  stateInfo.append("p").html(`<p><b>Total Hospitalization: </b></p>`);
+  stateInfo.append("p").text(`${hospitalized}`)
+  stateInfo.append("hr")
+  stateInfo.append("p").html(`<p><b>Total Deaths: </b></p>`);
+  stateInfo.append("p").text(`${deaths}`)
+  stateInfo.append("hr")
   stateInfo.append("p").text(`First Date: ${firstDate}`);
   stateInfo.append("p").text(`Last Date: ${lastDate}`);
 }

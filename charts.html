@@ -12,76 +12,69 @@
 </head>
 
 <body>
-
-  <h1>COVID Dashboard</h1>
-  <div class="button-container">
-    <a href="index.html" class="button-link">Home</a>
-    <a href="charts.html" class="button-link">Charts</a>
-    <a href="map_choropleth.html" class="button-link">US Map</a>
-  </div>
-
-  <br></br>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 jumbotron text-center">
+  <div class="grid-container">
+    
+    <div class="header">
+      <h1>COVID Dashboard</h1>
+      <div class="button-container">
+        <a href="index.html" class="button-link">Home</a>
+        <a href="charts.html" class="button-link">Charts</a>
+        <a href="map_choropleth.html" class="button-link">US Map</a>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <div class="tableTitle">
-            <h5>Select State:</h5>
-          </div>
-          <select id="selState" onchange="optionChanged(this.value)"></select>
+  
+    <div class="menu">
+      <div class="well">
+        <div class="tableTitle">
+          <h5>Select State:</h5>
         </div>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">State Info</h3>
-          </div>
-          <div id="stateInfo" class="panel-body"></div>
-        </div>
+        <select id="selState" onchange="optionChanged(this.value)"></select>
       </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">State Info</h3>
+        </div>
+        <div id="stateInfo" class="panel-body"></div>
+      </div>
+    </div>
+
+    <div class="main">
       <!-- Austin's Chart 1?? -->
-      <div class="col-md-5">
-        <div id="raceCase"></div>
-      </div>
-      <!-- Austin's Chart 2?? -->
-      <div class="row"></div>
-        <div class="col-md-5">
-          <div id="raceDeath"></div>
-        </div>
-      </div>
-      <!-- Carolyn's chart 1 -->
-      <div class="row"></div>
-        <div class="col-md-5">
-          <div id="chart1"></div>
-        </div>
-      </div>
-      <!-- Carolyn's chart 2 -->
-      <div class="row"></div>
-        <div class="col-md-5">
-          <div id="chart2"></div>
-        </div>
-      </div>
-      <!-- Carolyn's chart 3 -->
-      <div class="row"></div>
-        <div class="col-md-5">
-          <div id="chart3"></div>
-        </div>
-      </div>
+        <div id="stateSummary"></div>
     </div>
+
+    <div class="left">
+      <!-- Austin's Chart 2?? -->
+        <div id="raceDeath"></div>
+    </div>
+
+    <div class="right">
+      <!-- Austin's Chart 2?? -->
+        <div id="raceCase"></div>
+    </div>
+
+        <!-- Carolyn's chart 1 -->
+        <div class="row">
+            <div id="chart1"></div>
+        </div>
+
+        <!-- Carolyn's chart 2 -->
+        <div class="row">
+            <div id="chart2"></div>
+        </div>
+
+        <!-- Carolyn's chart 3 -->
+        <div class="row">
+            <div id="chart3"></div>
+        </div>
+        
   </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <!--adjust here for the various Javascript files-->
-  <!-- This is an example:
-  <script src="./static/js/app.js"></script>   
-  -->
   <script src="stateInfo.js"></script>
   <script src="austin/stateRace.js"></script>
-  <!-- <script src="austin/app.py"></script> -->
+  
   
 </body>
 
