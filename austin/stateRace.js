@@ -220,8 +220,8 @@ function stackedBar (state){
 
 
       trace1 = {
-        x: [whitePop, whiteCases, whiteDeaths],
-        y: ["Population", "Cases","Deaths"],
+        x: [whiteDeaths, whiteCases, whitePop],
+        y: ["Deaths", "Cases","Population"],
         type: "bar",
         name: "White", 
         // xaxis: 'x1',
@@ -231,8 +231,8 @@ function stackedBar (state){
       }
 
       trace2 = {
-        x: [blackPop, blackCases, blackDeaths],
-        y: ["Population", "Cases", "Deaths"],
+        x: [blackDeaths, blackCases, blackPop],
+        y: ["Deaths", "Cases", "Population"],
         type: "bar",
         name: "Black", 
         // xaxis: 'x1',
@@ -242,8 +242,8 @@ function stackedBar (state){
       }
 
       trace3 = {
-        x: [asianPop, asianCases, asianDeaths],
-        y: ["Population", "Cases", "Deaths"],
+        x: [asianDeaths, asianCases, asianPop],
+        y: ["Deaths", "Cases", "Population"],
         type: "bar",
         name: "Asian", 
         // xaxis: 'x1',
@@ -253,8 +253,8 @@ function stackedBar (state){
       }
 
       trace4 = {
-        x: [latinxPop, latinxCases, latinxDeaths],
-        y: ["Population", "Cases", "Deaths"],
+        x: [latinxDeaths, latinxCases, latinxPop],
+        y: ["Deaths", "Cases", "Population"],
         type: "bar",
         name: "Latinx", 
         // xaxis: 'x1',
@@ -264,8 +264,8 @@ function stackedBar (state){
       }
 
       trace5 = {
-        x: [nativePop, nativCases, nativeDeaths],
-        y: ["Population", "Cases", "Deaths"],
+        x: [nativeDeaths, nativCases, nativePop],
+        y: ["Deaths", "Cases", "Population"],
         type: "bar",
         name: "Native American or Alaskan Native", 
         // xaxis: 'x1',
@@ -275,8 +275,8 @@ function stackedBar (state){
       }
 
       trace6 = {
-        x: [piPop, piCases, piDeaths],
-        y: ["Population", "Cases", "Deaths"],
+        x: [piDeaths, piCases, piPop],
+        y: ["Deaths", "Cases", "Population"],
         type: "bar",
         name: "Pacific Islander", 
         // xaxis: 'x1',
@@ -286,8 +286,8 @@ function stackedBar (state){
       }
 
       trace7 = {
-        x: [otherPop, otherCases, otherDeaths],
-        y: ["Population", "Cases", "Deaths"],
+        x: [otherDeaths, otherCases, otherPop],
+        y: ["Deaths", "Cases", "Population"],
         type: "bar",
         name: "Other/Mixed/Unknown", 
         // xaxis: 'x1',
