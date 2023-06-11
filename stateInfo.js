@@ -89,37 +89,94 @@ function populateInfo(selectedState) {
   stateData.sort(function(a, b) {
     return a.date - b.date;
   });
-  console.log(stateData)
+
   // Collect state info
   var stateCount = stateData.length;   // Count the number of occurrences of the selected state
-  var firstDate = stateData[0].date;  // Get the first date from the selected state's data
-  var lastDate = stateData[stateData.length - 1].date;  // Get the first date from the selected state's data
+  var firstDate = dateStringToDate(stateData[0].date).toDateString();  // Get the first date from the selected state's data
+  var lastDate = dateStringToDate(stateData[stateData.length - 1].date).toDateString();  // Get the first date from the selected state's data
   var fullName = stateDictionary[selectedState];
   var deaths = stateData[stateData.length-1].death;
   var hospitalized = stateData[stateData.length-1].hospitalized;
   var totalPositive = stateData[stateData.length-1].total;
-      
+  
+  
+     
   // Display state information
   var stateInfo = d3.select("#stateInfo");
   stateInfo.html("");
   stateInfo.append("p").html(`<p><b>Records for ${fullName}: </b></p>`);
   stateInfo.append("p").text(`${stateCount}`)
   stateInfo.append("hr")
-  stateInfo.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
-  stateInfo.append("p").text(`${totalPositive}`)
-  stateInfo.append("hr")
-  stateInfo.append("p").html(`<p><b>Total Hospitalization: </b></p>`);
-  stateInfo.append("p").text(`${hospitalized}`)
-  stateInfo.append("hr")
-  stateInfo.append("p").html(`<p><b>Total Deaths: </b></p>`);
-  stateInfo.append("p").text(`${deaths}`)
-  stateInfo.append("hr")
+  // stateInfo.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
+  // stateInfo.append("p").text(`${totalPositive}`)
+  // stateInfo.append("hr")
+  // stateInfo.append("p").html(`<p><b>Total Hospitalization: </b></p>`);
+  // stateInfo.append("p").text(`${hospitalized}`)
+  // stateInfo.append("hr")
+  // stateInfo.append("p").html(`<p><b>Total Deaths: </b></p>`);
+  // stateInfo.append("p").text(`${deaths}`)
+  // stateInfo.append("hr")
   stateInfo.append("p").text(`First Date: ${firstDate}`);
   stateInfo.append("p").text(`Last Date: ${lastDate}`);
 
-  var stateCases = d3.select("#stateCases");
-  stateCases.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
-  stateCases.append("p").text(`${totalPositive}`)
+  var caseData = [{
+    type: "indicator",
+    mode: "number",
+    title: "Positive Cases",
+    value: totalPositive,
+    domain: { row: 0, column: 1 },
+    
+  }];
+  var caseLayout = {
+    width: 150,
+    height: 105,
+    paper_bgcolor: "rgb(235, 235, 235)",
+    margin: { t: 25, b: 5, l: 25, r: 25 },
+    grid: { rows: 1, columns: 1, pattern: "independent" },
+  };
+  
+  var hospitalData = [{
+    type: "indicator",
+    mode: "number",
+    title: "Hospitalizations",
+    value: hospitalized,
+    domain: { row: 0, column: 1 },
+    
+  }];
+  var hospitalLayout = {
+    width: 170,
+    height: 105,
+    paper_bgcolor: "rgb(235, 235, 235)",
+    margin: { t: 25, b: 5, l: 25, r: 25 },
+    grid: { rows: 1, columns: 1, pattern: "independent" },
+  };
+
+  var deathData = [{
+    type: "indicator",
+    mode: "number",
+    title: "Total Deaths",
+    value: deaths,
+    domain: { row: 0, column: 1 },
+    
+  }];
+  var deathLayout = {
+    width: 150,
+    height: 105,
+    paper_bgcolor: "rgb(235, 235, 235)",
+    margin: { t: 25, b: 5, l: 25, r: 25 },
+    grid: { rows: 1, columns: 1, pattern: "independent" },
+  };
+
+
+
+  Plotly.newPlot('stateCases', caseData, caseLayout);
+  Plotly.newPlot('stateHospital', hospitalData, hospitalLayout);
+  Plotly.newPlot('stateDeaths', deathData, deathLayout);
+
+  // var stateCases = d3.select("#stateCases");
+  // stateCases.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
+  // stateCases.append("p").text(`${totalPositive}`)
+
 }
 
 

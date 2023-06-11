@@ -2,10 +2,7 @@
 body {
   padding: 0;
   margin: 4;
-}
-
-body {
-  background-color: rgb(86, 171, 204);
+  background-color: rgb(215, 215, 215);
   font-family:"arial",sans-serif;
 }
 
@@ -20,25 +17,72 @@ html {
 }
 .menu {grid-area: menu;}
 .main {grid-area: main;}
+/* .cases{
+  grid-area: cases; 
+  background-color: gold;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hospitalization{
+  grid-area: hospitalization; 
+  background-color: yellowgreen;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 3px 3px 8px rgb(12, 12, 12);
+}
+.deaths{
+  grid-area: deaths; 
+  background-color: slateblue;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 3px 3px 8px rgb(12, 12, 12);
+} */
+.score{
+  grid-area: score;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 .left {grid-area: left;}
 .right {grid-area: right;}
-.left2 {grid-area: left2; background-color: blueviolet;}
+.left2 {grid-area: left2;}
 .right2 {grid-area: right2;}
 .main2 {grid-area: main2;}
 
 .grid-container {
   display: grid;
   grid-template-areas: 
-    'header header header header header'
-    'menu left left right right'
-    'menu main main main main'
-    'menu left2 left2 right2 right2'
-    'menu main2 main2 main2 main2'
+    'header header header header'
+    'menu score score score'
+    'menu left right right'
+    'menu main main main'
+    'menu left2 right2 right2'
+    'menu main2 main2 main2'
     ;
   gap: 10px;
   padding: 10px;
   
 }
+
+#stateCases{
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  float: left;
+  padding: 2px;
+  margin-right: 200px;
+}
+#stateHospital {
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  float: left;
+  padding: 2px;
+  margin-right: 200px;
+}
+#stateDeaths {
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  float: left;
+  padding: 2px;
+  margin-right: 200px;
+}
+
 
 
 
@@ -47,7 +91,8 @@ html {
 h1 {
   text-align: center;
   color: gold;
-  font-size:xx-large;
+  font-size:70px;
+  text-shadow: 1px 1px 5px black;
   /* font-weight: bolder; */
   
 }
@@ -62,13 +107,24 @@ h2 {
 .panel-title{
   text-align: center;
 }
+.panel{
+  color:#080808;
+  background-color: rgb(235, 235, 235);
+  border: 0px solid;
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
 .header{
   padding-bottom: 20px;
 }
 hr{
   /* color: gray; */
   border-top: 1px solid gold;
-  border-radius: 2px;
+  border-radius: 1px;
+  box-shadow: 3px 3px 2px rgb(12, 12, 12);
 }
 
 /* Pannel with dropdown */
@@ -82,6 +138,7 @@ hr{
   padding-bottom: 10px;
   padding-top: 0px;
   background-color: gold;
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
 }
 
 
@@ -96,6 +153,7 @@ hr{
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  box-shadow: 3px 3px 8px rgb(19, 19, 19);
 }
 
 .button-link:hover {
@@ -106,6 +164,7 @@ hr{
   display: flex;
   justify-content: center;
   gap: 10px;
+
 }
 
 

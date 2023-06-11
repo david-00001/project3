@@ -18,7 +18,7 @@ function raceCases (state){
       let casesNative = [];
       let casesPacificIslander = [];
       for(i in r) {
-        // console.log(r[i].Date)
+        
         date.push(r[i].Date);
         casesAsian.push(r[i].Cases_Asian)
         casesBlack.push(r[i].Cases_Black)
@@ -80,7 +80,8 @@ function raceCases (state){
         title: "Cases by Race",
         width: 700,
         height: 400,
-        paper_bgcolor:"rgb(86, 171, 204)",
+        paper_bgcolor:"rgb(215, 215, 215)",
+        plot_bgcolor:"rgb(215, 215, 215)",
       }
 
       Plotly.newPlot("raceCase",traceData,layout)
@@ -108,7 +109,7 @@ function raceDeath (state){
       let deathsNative = [];
       let deathsPacificIslander = [];
       for(i in r) {
-        // console.log(r[i].Date)
+        
         date.push(r[i].Date);
         deathsAsian.push(r[i].Deaths_Asian)
         deathsBlack.push(r[i].Deaths_Black)
@@ -170,9 +171,8 @@ function raceDeath (state){
         title: "Deaths by Race",
         width: 700,
         height: 400,
-        // background color
-        paper_bgcolor:"rgb(86, 171, 204)"
-        // plot_bgcolor for the plot background
+        paper_bgcolor:"rgb(215, 215, 215))",
+        plot_bgcolor:"rgb(215, 215, 215)",
         
       }
 
@@ -218,7 +218,7 @@ function stackedBar (state){
       let otherDeaths = 1 - (whiteDeaths+blackDeaths+asianDeaths+latinxDeaths+nativeDeaths+piDeaths)
       let otherPop = 1 - (whitePop+blackPop+asianPop+latinxPop+nativePop+piPop)
 
-      console.log(r)
+
       trace1 = {
         x: [whitePop, whiteCases, whiteDeaths],
         y: ["Population", "Cases","Deaths"],
@@ -302,8 +302,9 @@ function stackedBar (state){
         title: "Population Percentages",
         barmode: "stack",
         xaxis: {tickformat: '%'},
-        paper_bgcolor: "rgb(86, 171, 204)",
-        plot_bgcolor: "rgb(86, 171, 204)",
+        paper_bgcolor: "rgb(215, 215, 215)",
+        plot_bgcolor: "rgb(215, 215, 215)",
+        height: 400,
         // yaxis: {
         //   domain: [0, 0.33],
         //   anchor: 'x1', 
