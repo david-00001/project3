@@ -69,10 +69,6 @@ init();
 function optionChanged(selectedState) {
   populateInfo(selectedState)
   createPositiveCasesBarChart(selectedState) //Carolyn's chart(s)
-  raceCases(selectedState)
-  raceDeath(selectedState)
-  stackedBar(selectedState)
-  hispanicPercent(selectedState)
 
 }
 
@@ -213,11 +209,8 @@ function init() {
   var initialSelectedState = states[0];
   // optionChanged(initialSelectedState)   - Carolyn has this not-commented
   populateInfo(initialSelectedState)
-  raceCases(initialSelectedState);
-  raceDeath(initialSelectedState)
-  stackedBar(initialSelectedState)
   createPositiveCasesBarChart(initialSelectedState)
-  hispanicPercent(initialSelectedState)
+  
 
 
 });
