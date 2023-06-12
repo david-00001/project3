@@ -30,15 +30,27 @@ html {
 .right2 {grid-area: right2;}
 .main2 {grid-area: main2;}
 
-.grid-container {
+/* chart.html grid layout */
+.grid-container-cases {
+  display: grid;
+  grid-template-areas: 
+    'header header header header'
+    'menu score score score'
+    'menu left2 right2 right2'
+    'menu main2 main2 main2'
+    ;
+  gap: 10px;
+  padding: 10px;
+  
+}
+/* race.html grid layout */
+.grid-container-race {
   display: grid;
   grid-template-areas: 
     'header header header header'
     'menu score score score'
     'menu left right right'
     'menu main main main'
-    'menu left2 right2 right2'
-    'menu main2 main2 main2'
     ;
   gap: 10px;
   padding: 10px;
@@ -50,7 +62,7 @@ html {
   padding-bottom: 40px;
 }
 
-/* formating scorecards on charts page */
+/* formating scorecards on charts and race page */
 #stateCases{
   box-shadow: 2px 2px 12px rgb(12, 12, 12);
   float: left;
