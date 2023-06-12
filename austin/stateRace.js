@@ -99,7 +99,6 @@ function raceDeath (state){
     .then(function (response) {
       return response.json();
     }).then(function (text) {
-      
       // filter by state
       let r = text.filter(s => s.State == state); 
       
@@ -322,4 +321,144 @@ function stackedBar (state){
       Plotly.newPlot("stateSummary",traceData,layout)
 
     })
+}
+
+// cases line graph based on ethnicity
+function hispanicCases (state){
+  // calling the data from flask app
+  fetch('http://127.0.0.1:5000/api/v1.0/race-by-state')
+    .then(function (response) {
+      return response.json();
+    }).then(function (text) {
+      
+      // filtering by state
+      let r = text.filter(s => s.State == state); 
+            
+      // setting the variables
+      let date = [];
+      let hispanic = [];
+      let nonHispanic = [];
+      let unknown = [];
+      
+      
+      // for loop to get all the dates and race data
+      for(i in r) {
+        date.push(r[i].Date);
+        hispanic.push(r[i].Cases_Ethnicity_Hispanic)
+        nonHispanic.push(r[i].Cases_Ethnicity_NonHispanic)
+        unknown.push(r[i].Cases_Ethnicity_Unknown)
+        
+      }
+
+
+
+      // building the lines for the chart
+      trace1 = {
+        x: date,
+        y: hispanic,
+        name: "Hispanic",
+        type: "scatter",
+        mode: "lines",
+      }
+      trace2 = {
+        x: date,
+        y: nonHispanic,
+        name: "Non-Hispanic",
+        type: "scatter",
+        mode: "lines",
+      }
+      trace3 = {
+        x: date,
+        y: unknown,
+        name: "Unknown",
+        type: "scatter",
+        mode: "lines",
+      }
+      
+
+      // creating the variable that contains all the lines
+      traceData = [trace1,trace2,trace3]
+
+      // defining the layout of chart
+      let layout = {
+        title: "Cases by Ethnicity",
+        width: 700,
+        height: 400,
+        paper_bgcolor:"rgb(215, 215, 215)",
+        plot_bgcolor:"rgb(215, 215, 215)",
+      }
+
+      // add the chart to the HTML
+      Plotly.newPlot("ethnicityCase",traceData,layout)
+    });
+}
+
+// deaths line graph based on ethnicity
+function hispanicDeath (state){
+  // fetching data from flask app
+  fetch('http://127.0.0.1:5000/api/v1.0/race-by-state')
+    .then(function (response) {
+      return response.json();
+    }).then(function (text) {
+      // filter by state
+      let r = text.filter(s => s.State == state); 
+      
+      // creating the variables
+      let date = [];
+      let hispanic = [];
+      let nonHispanic = [];
+      let unknown = [];
+      
+      
+      // for loop to get the dates and ethnicity data
+      for(i in r) {
+        date.push(r[i].Date);
+        hispanic.push(r[i].Deaths_Ethnicity_Hispanic)
+        nonHispanic.push(r[i].Deaths_Ethnicity_NonHispanic)
+        unknown.push(r[i].Deaths_Ethnicity_Unknown)
+        
+      }
+
+
+
+      // building the lines for the chart
+      trace1 = {
+        x: date,
+        y: hispanic,
+        name: "Hispanic",
+        type: "scatter",
+        mode: "lines",
+      }
+      trace2 = {
+        x: date,
+        y: nonHispanic,
+        name: "Non-Hispanic",
+        type: "scatter",
+        mode: "lines",
+      }
+      trace3 = {
+        x: date,
+        y: unknown,
+        name: "Unknown",
+        type: "scatter",
+        mode: "lines",
+      }
+    
+
+      // variable that contains all the lines
+      traceData = [trace1,trace2,trace3]
+
+      // defining the layout of chart
+      let layout = {
+        title: "Deaths by Ethnicity",
+        width: 700,
+        height: 400,
+        paper_bgcolor:"rgb(215, 215, 215))",
+        plot_bgcolor:"rgb(215, 215, 215)",
+        
+      }
+
+      // adding the chart to the HTML
+      Plotly.newPlot("ethnicityDeath",traceData,layout)
+    });
 }
