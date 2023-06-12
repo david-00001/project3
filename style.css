@@ -17,26 +17,6 @@ html {
 }
 .menu {grid-area: menu;}
 .main {grid-area: main;}
-/* .cases{
-  grid-area: cases; 
-  background-color: gold;
-  margin-left: auto;
-  margin-right: auto;
-}
-.hospitalization{
-  grid-area: hospitalization; 
-  background-color: yellowgreen;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 3px 3px 8px rgb(12, 12, 12);
-}
-.deaths{
-  grid-area: deaths; 
-  background-color: slateblue;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 3px 3px 8px rgb(12, 12, 12);
-} */
 .score{
   grid-area: score;
   justify-self: center;
@@ -65,6 +45,12 @@ html {
   
 }
 
+/* header grid*/
+.header{
+  padding-bottom: 40px;
+}
+
+/* formating scorecards on charts page */
 #stateCases{
   box-shadow: 2px 2px 12px rgb(12, 12, 12);
   float: left;
@@ -86,8 +72,6 @@ html {
 
 
 
-
-
 /*format Title*/
 h1 {
   text-align: center;
@@ -98,35 +82,13 @@ h1 {
   /* font-weight: bolder; */
   
 }
-
+/* format subtitle */
 h2 {
   text-align: center;
   color: gold;
   font-size: 400;
   font-weight: bolder;
   line-height: 0%;
-}
-.panel-title{
-  text-align: center;
-}
-.panel{
-  color:#080808;
-  background-color: rgb(235, 235, 235);
-  border: 0px solid;
-  box-shadow: 2px 2px 12px rgb(12, 12, 12);
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  padding-top: 5px;
-}
-.header{
-  padding-bottom: 40px;
-}
-hr{
-  /* color: gray; */
-  border-top: 1px solid gold;
-  border-radius: 1px;
-  box-shadow: 3px 3px 2px rgb(12, 12, 12);
 }
 
 /* Pannel with dropdown */
@@ -142,6 +104,32 @@ hr{
   background-color: gold;
   box-shadow: 2px 2px 12px rgb(12, 12, 12);
 }
+/* side panel on chart page */
+.panel-title{
+  text-align: center;
+}
+.panel{
+  color:#080808;
+  background-color: rgb(235, 235, 235);
+  border: 0px solid;
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+hr{
+  /* color: gray; */
+  border-top: 1px solid gold;
+  border-radius: 1px;
+  box-shadow: 3px 3px 2px rgb(12, 12, 12);
+}
+
+
+
+
+
+
 
 
 
@@ -221,8 +209,6 @@ hr{
   height: 400px;
   padding-top: 6px;
 }
-
-
 
 .map-container {
   display: grid;

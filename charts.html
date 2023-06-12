@@ -12,8 +12,9 @@
 </head>
 
 <body>
+  <!-- larger grid container -->
   <div class="grid-container">
-    
+    <!-- container for the header grid -->
     <div class="header">
       <h1>COVID Dashboard</h1>
       <div class="button-container">
@@ -24,13 +25,16 @@
     </div>
   
     <div class="menu">
+      <!-- container for side panel -->
       <div class="well">
+        <!-- dropdown menu box -->
         <div class="tableTitle">
           <h5>Select State:</h5>
         </div>
         <select id="selState" onchange="optionChanged(this.value)"></select>
       </div>
       <p></p>
+      <!-- state data based on selection -->
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">State Info</h3>
@@ -38,22 +42,15 @@
         <div id="stateInfo" class="panel-body"></div>
       </div>
     </div>
-  
+    
+    <!-- score cards -->
     <div class="score">
       <div id="stateCases"></div>
       <div id="stateHospital"></div>
       <div id="stateDeaths"></div>
     </div>
 
-    <!-- <div class="cases">
-      <div id="stateCases"></div>
-    </div>
-    <div class="hospitalization">
-      <div id="stateHospital"></div>
-    </div>
-    <div class="deaths">
-      <div id="stateDeaths"></div>
-    </div> -->
+    
 
     <div class="main">
       <!-- Austin's Chart 1?? -->
