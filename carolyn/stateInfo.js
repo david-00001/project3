@@ -213,7 +213,6 @@ var negativeTestsViral = stateData.map(function (obj) {
 var chartData2 = [
   {
     labels: [
-      "Total Test Results",
       "Number of Positive Test Results",
       "Number of Negative Test Results",
     ],
@@ -243,17 +242,17 @@ var chartData3 = [
     x: dates,
     y: positiveTestsViral,
     type: "line",
-    name: "Positive COVID Test Results",
+    name: "POS Test Results",
     yaxis: "y2",
     marker: {
-      color: "#FF6969",
+      color: "#FEA1A1",
     },
   },
   {
     x: dates,
     y: positiveCases,
     type: "line",
-    name: "Positive COVID cases",
+    name: "POS cases",
     yaxis: "y2",
     marker: {
       color: "#FF6969",
@@ -277,11 +276,13 @@ var layout1 = {
     overlaying: "y",
     side: "right",
   },
+  width: 800,
 };
 
 // Create the chart layout
 var layout2 = {
   title: `COVID Tests Results in ${selectedState}`,
+  width: 600,
 };
 
 // Create chart layout
@@ -300,6 +301,7 @@ var layout3 = {
     overlaying: "y",
     side: "right",
   },
+  width: 800,
 };
 
 // Plot the chart

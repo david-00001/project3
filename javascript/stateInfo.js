@@ -265,33 +265,34 @@ function createPositiveCasesBarChart(selectedState) {
   });
 
   // Create the chart data
-  var chartData1 = [{
+ var chartData1 = [
+  {
     x: dates,
     y: positiveCases,
-    type: 'bar',
-    name: 'Positive Cases',
+    type: "bar",
+    name: "Positive Cases",
     marker: {
-      color: "#B9E9FC"
-    }
+      color: "#B9E9FC",
+    },
   },
   {
     x: dates,
     y: deaths,
-    type:'line',
-    name:'Deaths',
-    yaxis: 'y2',
+    type: "line",
+    name: "Deaths",
+    yaxis: "y2",
     marker: {
-      color: "#FF6969"
-    }
-  }];
+      color: "#FF6969",
+    },
+  },
+];
 
-  // Create the chart data for the pie chart
+// Create the chart data for the pie chart
 var chartData2 = [
   {
     labels: [
-      //"Total Test Results",     Carolyn had this on but I don't think it is actually wanted
       "Number of Positive Test Results",
-      "Number of Negative Test Results"
+      "Number of Negative Test Results",
     ],
     values: [
       positiveTestsViral[positiveTestsViral.length - 1],
@@ -319,17 +320,17 @@ var chartData3 = [
     x: dates,
     y: positiveTestsViral,
     type: "line",
-    name: "Positive COVID Test Results",      //This needs to be renamed so it doesn't display the same as the one below because of limited space
+    name: "POS Test Results",
     yaxis: "y2",
     marker: {
-      color: "#FF6969",
+      color: "#FEA1A1",
     },
   },
   {
     x: dates,
     y: positiveCases,
     type: "line",
-    name: "Positive COVID cases",     //This needs to be renamed so it doesn't display the same as the one below because of limited space
+    name: "POS cases",
     yaxis: "y2",
     marker: {
       color: "#FF6969",
@@ -341,23 +342,25 @@ var chartData3 = [
 var layout1 = {
   title: `Positive Cases and Deaths in ${selectedState}`,
   xaxis: {
-    title: 'Date',
-    type: 'date',
-    tickformat: '%Y-%m-%d'
+    title: "Date",
+    type: "date",
+    tickformat: "%Y-%m-%d",
   },
   yaxis: {
-    title: 'Positive Cases'
+    title: "Positive Cases",
   },
   yaxis2: {
-    title: 'Deaths',
-    overlaying: 'y',
-    side: 'right',
-  }
+    title: "Deaths",
+    overlaying: "y",
+    side: "right",
+  },
+  width: 800,
 };
 
 // Create the chart layout
 var layout2 = {
   title: `COVID Tests Results in ${selectedState}`,
+  width: 600,
 };
 
 // Create chart layout
@@ -376,6 +379,7 @@ var layout3 = {
     overlaying: "y",
     side: "right",
   },
+  width: 800,
 };
 
 // Plot the chart
@@ -383,8 +387,3 @@ Plotly.newPlot("chart1", chartData1, layout1);
 Plotly.newPlot("chart2", chartData2, layout2);
 Plotly.newPlot("chart3", chartData3, layout3);
 }
-
-// This was here before adding Carolyn's code. I think it was from when she just had one chart
-// // Plot the chart
-// Plotly.newPlot('chart', chartData, layout);
-// }
