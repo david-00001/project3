@@ -165,6 +165,12 @@ function createScatterPlot(selectedState) {
   var deaths = stateData.map(function(obj) {
     return obj.death;
   });
+  var hospitalizedCumulative = stateData.map(function(obj) {
+    return obj.hospitalized;
+  });
+  var positiveCases = stateData.map(function(obj) {
+    return obj.positive;
+  });
 
   // Scatter plot data
   var scatterData = [{
@@ -222,11 +228,11 @@ var areaData = [{
   }
 }, {
   x: dates,
-  y: recoveries,
+  y: hospitalizedCumulative,
   type: 'scatter',
   mode: 'none',
   fill: 'tonexty',
-  name: 'Recoveries',
+  name: 'Hospitalized',
   line: {
     color: '#B9E9FC'
   }
