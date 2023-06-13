@@ -57,24 +57,24 @@ function buildMap(data, selectedDate) {
         showlakes: false,
         lakecolor: 'rgb(255,255,255)'
     },
-    legend: {
-        x:1,
-        y:1,
-        xanchor:'right',
-        yanchor:'top',
-        pad: {
-            r:100
-        }
-    },
-    margin: {
-        t: 20,
-        r: 20,
-        b: 20,
-        l: 20
-    }
+    // legend: {
+    //     x:1,
+    //     y:1,
+    //     xanchor:'right',
+    //     yanchor:'top',
+    //     pad: {
+    //         r:100
+    //     }
+    // },
+    // margin: {
+    //     t: 20,
+    //     r: 20,
+    //     b: 20,
+    //     l: 20
+    // }
     };
 
-    // Render the choropleth map
+    // Add the choropleth map
     Plotly.newPlot('map', [trace], layout);
 }
 
@@ -119,10 +119,10 @@ function buildTable(data, selectedDate) {
     // Print to console for testing purposes
     console.log(topTenData);
 
-    // Create the table HTML
+    // Create table HTML
     var tableHTML = "<table><tr><th>State</th><th>Positive Cases</th></tr>";
 
-    // Populate the table rows with state and positive case data
+    // Populate table rows with state and positive case data
     topTenData.forEach(function(obj) {
         var formattedPositive = obj.positive.toLocaleString();
         tableHTML += "<tr><td>" + obj.state + "</td><td>" + formattedPositive + "</td></tr>";
@@ -130,7 +130,7 @@ function buildTable(data, selectedDate) {
 
     tableHTML += "</table>";
 
-    // Display the table
+    // Display table
     document.getElementById("table").innerHTML = tableHTML;
 }
 
@@ -149,7 +149,7 @@ function init() {
     // Retrieve dates for dropdown. Start by creating a new set
     var dateSet = new Set();
 
-    // Retrieve dates and add them to the Set
+    // Retrieve dates and add them to the set
     data.forEach(function(obj) {
         var date = obj.date;
         if (date >= 20200128) {  // Exclude dates before 20200128 because those values were null for positive cases
@@ -157,10 +157,10 @@ function init() {
         }
     });
 
-    // Convert the Set to an array
+    // Convert Set to an array
     dates = Array.from(dateSet);
 
-    // Sort the dates array in ascending order
+    // Sort dates array in ascending order
     dates.sort(function(a, b) {
         return a - b;
     });
@@ -179,6 +179,26 @@ function init() {
 
 
 
+// Initialize rangeslider
+var slider = document.getElementById('slider');
+var dateInfo1 = document.getElementById("dateInfo1");
+dateInfo1.innerHTML = slider.value;
+dateInfo2.innerHTML = slider.value;
+
+slider.oninput = function() {
+    dateInfo1.innerHTML = this.value;
+    dateInfo2.innerHTML = this.value;
+    // Convert slider value to a date from the dates array
+    var selectedDate = dates[this.value];
+
+    // Output selected date
+    dateInfo1.innerHTML = selectedDate;
+    dateInfo2.innerHTML = selectedDate;
+
+    // Call optionChanged with selected date
+    optionChanged(selectedDate);
+}
+
 
 
 
@@ -189,22 +209,3 @@ let data;
 let dates;
 init();
 
-// Initialize the rangeslider
-var slider = document.getElementById('slider');
-var dateInfo1 = document.getElementById("dateInfo1");
-dateInfo1.innerHTML = slider.value;
-dateInfo2.innerHTML = slider.value;
-
-slider.oninput = function() {
-    dateInfo1.innerHTML = this.value;
-    dateInfo2.innerHTML = this.value;
-    // Convert the slider value to a date from the dates array
-    var selectedDate = dates[this.value];
-
-    // Output the selected date
-    dateInfo1.innerHTML = selectedDate;
-    dateInfo2.innerHTML = selectedDate;
-
-    // Call the optionChanged() function with the selected date
-    optionChanged(selectedDate);
-}
