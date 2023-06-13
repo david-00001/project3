@@ -69,7 +69,8 @@ init();
 function optionChanged(selectedState) {
   populateInfo(selectedState)
   createPositiveCasesBarChart(selectedState) //Carolyn's chart(s)
-
+  createScatterPlot(selectedState)
+  createStackedBarGraph(selectedState)
 }
 
 
@@ -210,6 +211,8 @@ function init() {
   // optionChanged(initialSelectedState)   - Carolyn has this not-commented
   populateInfo(initialSelectedState)
   createPositiveCasesBarChart(initialSelectedState)
+  createScatterPlot(initialSelectedState)
+  createStackedBarGraph(initialSelectedState)
   
 
 
