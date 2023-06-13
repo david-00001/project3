@@ -140,3 +140,53 @@ function init() {
 });
 
 }
+
+function createCovidSpreadChart(selectedState) {
+  // Filtering the data for each specific state
+  var StateData = data.filter(function(obj) {
+    return obj.state === selectedState;
+  });
+
+  // Sorting the data in ascending order
+  StateData.sort(function(a, b) {
+    return a.date - b.date;
+  })
+
+  // Extracting the date and positive cases values for the chart
+  var dates = StateData.map(function(obj) {
+    return new Date(obj.date);
+  });
+  var positiveCases = StateData.map(function(obj) {
+    return obj.positive;
+  });
+
+  // Extracting the death cases values for the chart
+  var deaths = StateData.map(function(obj) {
+    return obj.death;
+  });
+  
+  // Create the line chart data
+  var lineChart = new Chart( {
+    type: 'line',
+    data: {
+      labels: dates,
+      datasets: [
+        {
+          label: 'Positive Cases',
+          data: positiveCases,
+          borderColor: 'blue',
+          fill: false
+        },
+        {
+          label: 'Deaths',
+          data: deaths,
+          borderColor: 'red',
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true
+    }
+  });
+}
