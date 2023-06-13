@@ -1,5 +1,5 @@
 # project3 - Tracking COVID in the US
-## Team Members:
+## Team Members
 Austin McClain, Carolyn Chu, David Rodgers, Romario Leal
 
 ## Objective
@@ -13,8 +13,11 @@ JavaScript, D3, Plotly (charts and choropleth map), Flask, and a lot of CSS. We 
 ## Index files
 
 index.html - Homepage of dashboard
+
 Cases - Contains general charts about positive cases, deaths, and test results
+
 Race/Ethnicity - Contains charts related to race/ethnicity
+
 US Map - Contains map with slider
 
 
@@ -24,14 +27,16 @@ US Map - Contains map with slider
 Javascript files are located in /javascript
 
 stateInfo.js - Contains javascript for Cases page
+
 stateInfoRace.js - 
+
 stateRace.js - 
+
 map_choropleth.js - Contains javascript for Plotly map and rangeslider
 
 
 
-
-#### Resources Used:
+## Resources Used
 Used this article to understand how to use a set to contain unique values for dropdown and then to convert it into an array:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 
