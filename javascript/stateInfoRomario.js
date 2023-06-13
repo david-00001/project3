@@ -311,7 +311,7 @@ function createStackedBarGraph(selectedState) {
 
   // Stacked bar graph layout
   var stackedBarLayout = {
-    title: 'COVID-19 Data: Positive Cases, Deaths, and Recoveries',
+    title: 'COVID-19 Data: Positive Cases, Deaths, and Recoveries ${selectedState}',
     xaxis: {
       title: 'Date',
       type: 'date',
