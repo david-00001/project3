@@ -1,5 +1,5 @@
 # project3 - Tracking COVID in the US
-## Team Members:
+## Team Members
 Austin McClain, Carolyn Chu, David Rodgers, Romario Leal
 
 ## Objective
@@ -36,8 +36,7 @@ map_choropleth.js - Contains javascript for Plotly map and rangeslider
 
 
 
-
-#### Resources Used:
+## Resources Used
 Used this article to understand how to use a set to contain unique values for dropdown and then to convert it into an array:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
 
