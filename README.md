@@ -13,8 +13,11 @@ JavaScript, D3, Plotly (charts and choropleth map), Flask, and a lot of CSS. We 
 ## Index files
 
 index.html - Homepage of dashboard
+
 Cases - Contains general charts about positive cases, deaths, and test results
+
 Race/Ethnicity - Contains charts related to race/ethnicity
+
 US Map - Contains map with slider
 
 
@@ -24,8 +27,11 @@ US Map - Contains map with slider
 Javascript files are located in /javascript
 
 stateInfo.js - Contains javascript for Cases page
+
 stateInfoRace.js - 
+
 stateRace.js - 
+
 map_choropleth.js - Contains javascript for Plotly map and rangeslider
 
 
