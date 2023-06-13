@@ -162,6 +162,9 @@ function createScatterPlot(selectedState) {
   var hospitalizations = stateData.map(function(obj) {
     return obj.hospitalizedCumulative;
   });
+  var deaths = stateData.map(function(obj) {
+    return obj.death;
+  });
 
   // Scatter plot data
   var scatterData = [{
@@ -260,7 +263,8 @@ function createStackedBarGraph(selectedState) {
 
   // Extracting the date, positive cases, deaths, and recoveries
   var dates = stateData.map(function(obj) {
-    return new Date(obj.date);
+    // previously new Date
+    return dateStringToDate(obj.date);
   });
   var positiveCases = stateData.map(function(obj) {
     return obj.positive;
