@@ -310,30 +310,31 @@ var chartData3 = [
   {
     x: dates,
     y: deaths,
-    type: "bar",
-    name: "COVID Deaths",
-    marker: {
-      color: "#",
-    },
-  },
-  {
-    x: dates,
-    y: positiveTestsViral,
     type: "line",
-    name: "POS Test Results",
-    yaxis: "y2",
+    name: "COVID Deaths",
+    yaxis: "y2", // Assign to yaxis2
     marker: {
-      color: "#C9A7EB",
+      color: "#B799FF",
     },
   },
   {
     x: dates,
     y: positiveCases,
     type: "line",
-    name: "POS cases",
-    yaxis: "y2",
+    name: "POS Cases",
+    yaxis: "y2", // Assign to yaxis2
     marker: {
       color: "#FF6969",
+    },
+  },
+  {
+    x: dates,
+    y: positiveTestsViral,
+    type: "bar",
+    name: "POS Test Results",
+    yaxis: "y1", // Assign to yaxis1
+    marker: {
+      color: "#C9A7EB",
     },
   },
 ];
@@ -371,8 +372,8 @@ var layout2 = {
 // Create chart layout
 var layout3 = {
   title: `Positive Test Results and Deaths in ${selectedState}`,
-  paper_bgcolor:"rgb(215, 215, 215)",
-  plot_bgcolor:"rgb(215, 215, 215)",
+  paper_bgcolor: "rgb(215, 215, 215)",
+  plot_bgcolor: "rgb(215, 215, 215)",
   xaxis: {
     title: "Date",
     type: "date",
