@@ -57,15 +57,15 @@ function buildMap(data, selectedDate) {
         showlakes: false,
         lakecolor: 'rgb(255,255,255)'
     },
-    // legend: {
-    //     x:1,
-    //     y:1,
-    //     xanchor:'right',
-    //     yanchor:'top',
-    //     pad: {
-    //         r:100
-    //     }
-    // },
+    legend: {
+        x:1,
+        y:1,
+        xanchor:'right',
+        yanchor:'top',
+        pad: {
+            r:100
+        }
+    },
     // margin: {
     //     t: 20,
     //     r: 20,
