@@ -323,7 +323,7 @@ var chartData3 = [
     name: "POS Test Results",
     yaxis: "y2",
     marker: {
-      color: "#FEA1A1",
+      color: "#C9A7EB",
     },
   },
   {
