@@ -69,8 +69,7 @@ init();
 function optionChanged(selectedState) {
   populateInfo(selectedState)
   createPositiveCasesBarChart(selectedState) //Carolyn's chart(s)
-  createScatterPlot(selectedState)
-  createStackedBarGraph(selectedState)
+
 }
 
 
@@ -105,6 +104,15 @@ function populateInfo(selectedState) {
   stateInfo.append("p").html(`<p><b>Records for ${fullName}: </b></p>`);
   stateInfo.append("p").text(`${stateCount}`)
   stateInfo.append("hr")
+  // stateInfo.append("p").html(`<p><b>Total Positive Cases: </b></p>`);
+  // stateInfo.append("p").text(`${totalPositive}`)
+  // stateInfo.append("hr")
+  // stateInfo.append("p").html(`<p><b>Total Hospitalization: </b></p>`);
+  // stateInfo.append("p").text(`${hospitalized}`)
+  // stateInfo.append("hr")
+  // stateInfo.append("p").html(`<p><b>Total Deaths: </b></p>`);
+  // stateInfo.append("p").text(`${deaths}`)
+  // stateInfo.append("hr")
   stateInfo.append("p").text(`First Date: ${firstDate}`);
   stateInfo.append("p").text(`Last Date: ${lastDate}`);
 
@@ -202,8 +210,6 @@ function init() {
   // optionChanged(initialSelectedState)   - Carolyn has this not-commented
   populateInfo(initialSelectedState)
   createPositiveCasesBarChart(initialSelectedState)
-  createScatterPlot(initialSelectedState)
-  createStackedBarGraph(initialSelectedState)
   
 
 
@@ -350,7 +356,8 @@ var layout1 = {
     overlaying: "y",
     side: "right",
   },
-  width: 700,
+  width: 800,
+  
 };
 
 // Create the chart layout
@@ -358,7 +365,7 @@ var layout2 = {
   title: `COVI Tests Results in ${selectedState}`,
   paper_bgcolor:"rgb(215, 215, 215)",
   plot_bgcolor:"rgb(215, 215, 215)",
-  width: 700,
+  width: 800,
 };
 
 // Create chart layout
@@ -379,6 +386,7 @@ var layout3 = {
     overlaying: "y",
     side: "right",
   },
+  width: 800,
 };
 
 // Plot the chart
