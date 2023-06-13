@@ -66,12 +66,12 @@ function buildMap(data, selectedDate) {
             r:100
         }
     },
-    // margin: {
-    //     t: 20,
-    //     r: 20,
-    //     b: 20,
-    //     l: 20
-    // }
+    margin: {
+        t: 20,
+        r: 20,
+        b: 20,
+        l: 20
+    }
     };
 
     // Add the choropleth map
