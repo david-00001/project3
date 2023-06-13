@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>COVID Spread: Race and Ethnicity</title>
+  <!--need to adjust here for the CSS styling-->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+  <!-- larger grid container -->
+  <div class="grid-container-race">
+    <!-- container for the header grid -->
+    <div class="header">
+      <h1>COVID Dashboard</h1>
+      <div class="button-container">
+        <a href="index.html" class="button-link">Home</a>
+        <a href="charts.html" class="button-link">Cases</a>
+        <a href="race.html" class="button-link">Race/Ethnicity</a>
+        <a href="map_choropleth.html" class="button-link">US Map</a>
+      </div>
+    </div>
+  
+    <div class="menu">
+      <!-- container for side panel -->
+      <div class="well">
+        <!-- dropdown menu box -->
+        <div class="tableTitle">
+          <h5>Select State:</h5>
+        </div>
+        <select id="selState" onchange="optionChanged(this.value)"></select>
+      </div>
+      <p></p>
+      <!-- state data based on selection -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">State Info</h3>
+        </div>
+        <div id="stateInfo" class="panel-body"></div>
+      </div>
+    </div>
+    
+    <!-- score cards -->
+    <div class="score">
+      <div id="stateCases"></div>
+      <div id="stateHospital"></div>
+      <div id="stateDeaths"></div>
+    </div>
+
+    
+    <!-- charts for race -->
+    <div class="main">
+      <!-- Austin's Chart 1?? -->
+        <div id="stateSummary"></div>
+    </div>
+
+    <div class="left">
+      <!-- Austin's Chart 2?? -->
+        <div id="raceCase"></div>
+    </div>
+
+    <div class="right">
+      <!-- Austin's Chart 2?? -->
+        <div id="raceDeath"></div>
+    </div>
+    
+    <!-- charts for ethnicity -->
+    <div class="left2">
+      <!-- Austin's Chart 2?? -->
+        <div id="ethnicityCase"></div>
+    </div>
+
+    <div class="right2">
+      <!-- Austin's Chart 2?? -->
+        <div id="ethnicityDeath"></div>
+    </div>
+
+        
+        
+  </div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="stateInfoRace.js"></script>
+  <script src="austin/stateRace.js"></script>
+  
+  
+</body>
+
+</html>

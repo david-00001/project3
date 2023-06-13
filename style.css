@@ -2,31 +2,100 @@
 body {
   padding: 0;
   margin: 4;
+  background-color: rgb(215, 215, 215);
+  font-family:"arial",sans-serif;
 }
 
-/* Set map, body, and html to 100% of the screen size. */
-/* #map {
-  width: 100%;
-  height: 400px;
-} */
-
-body {
-  background-color: rgb(184, 124, 124);
-}
 html {
   width: 100%;
   height: 100%;
 }
 
+/* formating grid */
+.header {
+  grid-area: header;
+}
+.menu {grid-area: menu;}
+.main {grid-area: main;}
+.score{
+  grid-area: score;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+.left {grid-area: left;}
+.right {grid-area: right;}
+.left2 {grid-area: left2;}
+.right2 {grid-area: right2;}
+.main2 {grid-area: main2;}
+
+/* chart.html grid layout */
+.grid-container-cases {
+  display: grid;
+  grid-template-areas: 
+    'header header header header'
+    'menu score score score'
+    'menu left2 right2 right2'
+    'menu main2 main2 main2'
+    ;
+  gap: 10px;
+  padding: 10px;
+  
+}
+/* race.html grid layout */
+.grid-container-race {
+  display: grid;
+  grid-template-areas: 
+    'header header header header'
+    'menu score score score'
+    'menu left right right'
+    'menu main main main'
+    'menu left2 right2 right2'
+    ;
+  gap: 10px;
+  padding: 10px;
+  
+}
+
+/* header grid*/
+.header{
+  padding-bottom: 40px;
+}
+
+/* formating scorecards on charts and race page */
+#stateCases{
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  float: left;
+  padding: 2px;
+  margin-right: 200px;
+}
+#stateHospital {
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  float: left;
+  padding: 2px;
+  margin-right: 200px;
+}
+#stateDeaths {
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  float: left;
+  padding: 2px;
+  margin-right: 200px;
+}
+
+
+
 /*format Title*/
 h1 {
   text-align: center;
   color: gold;
-  font-size:xx-large;
+  font-size:70px;
+  text-shadow: 1px 1px 5px black;
+  margin-bottom: 10px;
   /* font-weight: bolder; */
   
 }
-
+/* format subtitle */
 h2 {
   text-align: center;
   color: gold;
@@ -35,6 +104,7 @@ h2 {
   line-height: 0%;
 }
 
+/* Pannel with dropdown */
 .well {
   color: black;
   height: max-content;
@@ -42,12 +112,135 @@ h2 {
   border: 2px solid;
   padding-left: 10px;
   padding-right: 10px;
-  padding-bottom: 1px;
+  padding-bottom: 10px;
   padding-top: 0px;
   background-color: gold;
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+}
+/* side panel on chart page */
+.panel-title{
+  text-align: center;
+}
+.panel{
+  color:#080808;
+  background-color: rgb(235, 235, 235);
+  border: 0px solid;
+  box-shadow: 2px 2px 12px rgb(12, 12, 12);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+}
+hr{
+  /* color: gray; */
+  border-top: 1px solid gold;
+  border-radius: 1px;
+  box-shadow: 3px 3px 2px rgb(12, 12, 12);
 }
 
-.dropdown{
-  background-color: lime;
-  width:20px;
+
+
+
+
+
+
+
+
+
+/* --- Buttons --- */
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #080808;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  box-shadow: 3px 3px 8px rgb(19, 19, 19);
+}
+
+.button-link:hover {
+  background-color: #7e8081;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+}
+
+
+
+/* --- Slider --- */
+#slidecontainer {
+  width: 95%;
+  background-color:white;
+  border-radius: 8px 8px 0 0;
+}
+
+#slider {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  display:block;
+  margin:0 auto;
+  
+}
+
+#slider:hover {
+  opacity: 1;
+}
+
+#slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+#slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+
+
+/* --- Map --- */
+#map {
+  width: 100%;
+  height: 400px;
+  padding-top: 6px;
+}
+
+.map-container {
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+}
+
+.map-subtext {
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.center-align {
+  text-align: center;
+}
+
+.white-background {
+  background-color:white
+}
+
+.bold-text {
+  font-weight: bold;
 }
