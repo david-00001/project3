@@ -303,19 +303,10 @@ var chartData2 = [
 var chartData3 = [
   {
     x: dates,
-    y: deaths,
-    type: "bar",
-    name: "COVID Deaths",
-    marker: {
-      color: "#",
-    },
-  },
-  {
-    x: dates,
     y: positiveTestsViral,
     type: "line",
     name: "POS Test Results",
-    yaxis: "y2",
+    yaxis: "y3", // Assign to yaxis3
     marker: {
       color: "#C9A7EB",
     },
@@ -324,10 +315,20 @@ var chartData3 = [
     x: dates,
     y: positiveCases,
     type: "line",
-    name: "POS cases",
-    yaxis: "y2",
+    name: "POS Cases",
+    yaxis: "y2", // Assign to yaxis2
     marker: {
       color: "#FF6969",
+    },
+  },
+  {
+    x: dates,
+    y: deaths,
+    type: "bar",
+    name: "COVID Deaths",
+    yaxis: "y1", // Assign to yaxis1
+    marker: {
+      color: "#C4DFDF",
     },
   },
 ];
@@ -355,7 +356,7 @@ var layout1 = {
 
 // Create the chart layout
 var layout2 = {
-  title: `COVI Tests Results in ${selectedState}`,
+  title: `COVID Tests Results in ${selectedState}`,
   paper_bgcolor:"rgb(215, 215, 215)",
   plot_bgcolor:"rgb(215, 215, 215)",
   width: 700,
@@ -364,21 +365,31 @@ var layout2 = {
 // Create chart layout
 var layout3 = {
   title: `Positive Test Results and Deaths in ${selectedState}`,
-  paper_bgcolor:"rgb(215, 215, 215)",
-  plot_bgcolor:"rgb(215, 215, 215)",
+  paper_bgcolor: "rgb(215, 215, 215)",
+  plot_bgcolor: "rgb(215, 215, 215)",
   xaxis: {
     title: "Date",
     type: "date",
     tickformat: "%Y-%m-%d",
   },
   yaxis: {
-    title: "Positive Test Results",
+    title: "Deaths",
+    side: "right",
+    automargin: true, // Automatically adjust the margin to prevent overlap
   },
   yaxis2: {
-    title: "Deaths",
     overlaying: "y",
-    side: "right",
+    side: "left",
+    automargin: true, 
   },
+  yaxis3: {
+    title: "Positive Test Results and Cases",
+    overlaying: "y",
+    side: "left",
+    automargin: true,
+    showticklabels: false,
+  },
+  width: 900, // Increase the width of the chart layout
 };
 
 // Plot the chart
