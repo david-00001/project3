@@ -1,6 +1,7 @@
 // URL to sample data
 // const url = "https://api.covidtracking.com/v1/states/daily.json"
 
+
 // Dictionary to map state acronyms to full names
 // const stateDictionary = {
 //   AL: "Alabama",
@@ -62,14 +63,19 @@
 // };
 
 
+
+
 // let data;
 // init();
+
 
 // // Function to handle changes in the dropdown selection
 // function optionChanged(selectedState) {
 //   populateInfo(selectedState)
 
+
 // }
+
 
 // function populateInfo(selectedState) {
 //   // Filter data for selected state
@@ -77,17 +83,19 @@
 //     return obj.state === selectedState;
 //   });
 
+
 //   // Sort the stateData array based on the date in ascending order
 //   stateData.sort(function(a, b) {
 //     return a.date - b.date;
 //   });
+
 
 //   // Collect state info
 //   var stateCount = stateData.length;   // Count the number of occurrences of the selected state
 //   var firstDate = stateData[0].date;  // Get the first date from the selected state's data
 //   var lastDate = stateData[stateData.length - 1].date;  // Get the first date from the selected state's data
 //   var fullName = stateDictionary[selectedState];
-      
+     
 //   // Display state information
 //   var stateInfo = d3.select("#stateInfo");
 //   stateInfo.html("");
@@ -96,14 +104,18 @@
 //   stateInfo.append("p").text(`Last Date: ${lastDate}`);
 // }
 
+
 // // Fetch JSON data and populate dropdown
 // function init() {
 //   d3.json(url).then(function(jsonData) {
 
+
 //   data = jsonData
+
 
 //   // Retrieve states for dropdown. Start by creating a new set
 //   var stateSet = new Set();
+
 
 //   // Retrieve states and add them to the Set
 //   data.forEach(function(obj) {
@@ -111,8 +123,10 @@
 //     stateSet.add(state);
 //   });
 
+
 //   // Convert the Set to an array
 //   var states = Array.from(stateSet);
+
 
 //   // Populate the dropdown menu
 //   var dropdown = d3.select("#selState");
@@ -121,13 +135,17 @@
 //     dropdown.append("option").text(`${state} - ${fullName}`).property("value", state);
 //   });
 
+
 //   // Start with first state selected
 //   var initialSelectedState = states[0];
 //   optionChanged(initialSelectedState);
 
+
 // });
 
+
 // }
+
 
 // function StringtoDate(dateStringINT) {
 //   var year = dateStringINT.slice(0, 4);
@@ -137,10 +155,13 @@
 //   return date;
 // }
 
+
 // // OLD CODE
+
 
 // // Plotting the new chart
 // Plotly.newPlot('chart', chartData, layout);
+
 
 // Creating the scatter plot
 function createScatterPlot(selectedState) {
@@ -149,10 +170,12 @@ function createScatterPlot(selectedState) {
     return obj.state === selectedState;
   });
 
+
   // Sorting the data in ascending order
   stateData.sort(function(a, b) {
     return a.date - b.date;
   });
+
 
   // Extracting the date and cumulative hospitalizations
   var dates = stateData.map(function(obj) {
@@ -171,6 +194,7 @@ function createScatterPlot(selectedState) {
   var positiveCases = stateData.map(function(obj) {
     return obj.positive;
   });
+
 
  // Scatter plot data
 var scatterData = [{
@@ -196,6 +220,7 @@ var scatterData = [{
   }
 }];
 
+
 // Scatter plot layout
 var scatterLayout = {
   title: `Cumulative Hospitalizations in ${selectedState}`,
@@ -209,12 +234,17 @@ var scatterLayout = {
   },
 };
 
+
 // Plotting the scatter plot
 Plotly.newPlot('scatterChart', scatterData, scatterLayout);
 
 
 
-// Creating an area graph 
+
+
+
+// Creating an area graph
+
 
 // // Area graph data
 var areaData = [{
@@ -249,6 +279,7 @@ var areaData = [{
   }
 }];
 
+
 // Area graph layout
 var areaLayout = {
   title: `COVID-19 Spread in ${selectedState}`,
@@ -262,9 +293,11 @@ var areaLayout = {
   }
 };
 
+
 // Plotting the area graph
 Plotly.newPlot('areaGraph', areaData, areaLayout);
 }
+
 
 // Creating the stacked bar graph
 function createStackedBarGraph(selectedState) {
@@ -273,10 +306,12 @@ function createStackedBarGraph(selectedState) {
     return obj.state === selectedState;
   });
 
+
   // Sorting the data in ascending order
   stateData.sort(function(a, b) {
     return a.date - b.date;
   });
+
 
   // Extracting the date, positive cases, deaths, and recoveries
   var dates = stateData.map(function(obj) {
@@ -292,6 +327,7 @@ function createStackedBarGraph(selectedState) {
   var recoveries = stateData.map(function(obj) {
     return obj.recovered;
   });
+
 
   // Stacked bar graph data
   var stackedBarData = [{
@@ -320,6 +356,7 @@ function createStackedBarGraph(selectedState) {
     }
   }];
 
+
   // Stacked bar graph layout
   var stackedBarLayout = {
     title: 'COVID-19 Data: Positive Cases, Deaths, and Recoveries ${selectedState}',
@@ -333,6 +370,7 @@ function createStackedBarGraph(selectedState) {
     },
     barmode: 'stack'
   };
+
 
   // Creating the stacked bar graph
   Plotly.newPlot('stackedBarGraph', stackedBarData, stackedBarLayout);
